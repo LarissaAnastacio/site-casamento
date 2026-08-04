@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-4WF4470FNS"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-4WF4470FNS');
+    </script>
+
+    <!-- Importação das fontes do Google Fonts (Montserrat + Alex Brush + Cormorant Garamond) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cormorant+Garamond:wght@600;700&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Casamento de Regina & Marina</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Menu de Navegação -->
+    <nav class="navbar">
+        <a href="#home">Início</a>
+        <a href="#rsvp">Confirmar Presença</a>
+        <a href="#historia">Nossa História</a>
+        <a href="#evento">O Evento</a>
+    </nav>
+
+    <!-- Capa do Site -->
+    <header id="home" class="hero">
+        <div class="hero-content">
+            <!-- Ícone das Alianças -->
+            <img src="imagens/aliancas.png" alt="Ícone de Aliança" class="icon-aliancas">
+            
+            <p class="sub-title">VAMOS NOS CASAR!</p>
+            <h1>Regina & Marina</h1>
+            <p class="date">2 de Maio de 2027</p>
+            
+            <!-- Contagem Regressiva -->
+            <div id="countdown" class="countdown">
+                <div><span id="days">00</span><p>Dias</p></div>
+                <div><span id="hours">00</span><p>Horas</p></div>
+                <div><span id="minutes">00</span><p>Min</p></div>
+                <div><span id="seconds">00</span><p>Seg</p></div>
+            </div>
+
+            <!-- Mensagem de Boas-Vindas -->
+            <div class="welcome-text">
+                <p>Criamos este espaço com todo o carinho do mundo para compartilhar com vocês os detalhes desse momento tão especial das nossas vidas. Saber que teremos as pessoas que mais amamos ao nosso lado torna tudo ainda mais inesquecível!</p>
+                <p>Para nos ajudar a preparar cada detalhe com muito amor, pedimos a gentileza de confirmar sua presença. É bem simples: basta preencher os dados abaixo no menu <strong>“Confirmar Presença”</strong>.</p>
+                <p>A contagem regressiva já começou e mal podemos esperar para celebrar esse dia tão nosso com vocês!</p>
+            </div>
+        </div>
+    </header>
+
+    <!-- Seção Confirmar Presença (RSVP - Posicionada logo abaixo da capa e contagem) -->
+    <section id="rsvp" class="section">
+        <h2>Confirmar Presença</h2>
+        <div class="divider"></div>
+        <form class="rsvp-form" onsubmit="enviarWhatsApp(event)">
+            <input type="text" id="nome" placeholder="Seu nome completo" required>
+            <select id="confirmacao" required>
+                <option value="">Você irá ao evento?</option>
+                <option value="Sim, com certeza!">Sim, com certeza estarei lá!</option>
+                <option value="Infelizmente não poderei ir.">Infelizmente não poderei ir</option>
+            </select>
+            <input type="number" id="acompanhantes" placeholder="Quantidade de acompanhantes" min="0" required>
+            <button type="submit" class="btn">Confirmar via WhatsApp</button>
+        </form>
+    </section>
+
+    <!-- Seção Nossa História -->
+    <section id="historia" class="section bg-light">
+        <h2>Nossa História</h2>
+        <div class="divider"></div>
+        <p class="text">
+            O amor não surge por acaso, ele é construído nos pequenos detalhes. 
+            Aqui começou nossa jornada e estamos ansiosos para celebrar este dia tão especial com você!
+        </p>
+    </section>
+
+    <!-- Seção O Evento -->
+    <section id="evento" class="section">
+        <h2>O Evento</h2>
+        <div class="divider"></div>
+        
+        <img src="imagens/foto-principal.jpg" alt="Regina e Marina juntas" class="foto-casal-borda">
+        
+        <div class="event-details">
+            <!-- Detalhes do local e horário -->
+        </div>
+    </section>
+
+    <!-- Seção Envio de Fotos -->
+    <section id="galeria" class="section bg-light">
+        <h2>📷 Compartilhe suas fotos conosco!</h2>
+        <div class="divider"></div>
+        <p class="text">
+            A nossa jornada é construída dia a dia, cheia de amor, cumplicidade 
+            e sonhos compartilhados. Estamos radiantes por celebrar o capítulo 
+            mais importante de nossas vidas com vocês, nossos amigos e familiares amados!
+        </p>
+        <br>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSdoryPe89VQi-zNGaY_6b2jbA8RPVqG1VPlmHIacBsW2FgmeQ/viewform?usp=sharing&ouid=103458505567152603913" target="_blank" class="btn btn-upload">
+            📷 Enviar Fotos / Vídeos
+        </a>
+    </section>
+
+    <footer>
+        <p>© 2026 - Desenvolvido por <strong>Larissa da Silva Anastácio</strong> | Todos os direitos reservados.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

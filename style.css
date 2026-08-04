@@ -1,0 +1,252 @@
+/* ==========================================
+   ESTILOS GERAIS - PALETA TERRACOTA & PALHA
+   ========================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    color: #4A4238; /* Grafite quente elegante */
+    background-color: #F7F4EF; /* Cor Palha suave */
+    line-height: 1.6;
+}
+
+h1, h2, h3 {
+    font-family: 'Cormorant Garamond', serif;
+    color: #C86D51; /* Terracota principal */
+}
+
+/* ==========================================
+   MENU DE NAVEGAÇÃO
+   ========================================== */
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: rgba(247, 244, 239, 0.95);
+    padding: 15px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    z-index: 1000;
+}
+
+.navbar a {
+    text-decoration: none;
+    color: #C86D51;
+    font-weight: 600;
+    font-size: 0.85rem;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    transition: color 0.3s;
+}
+
+.navbar a:hover {
+    color: #A3523A; /* Terracota escuro */
+}
+
+/* ==========================================
+   CAPA (HERO) - FUNDO TERRACOTA
+   ========================================== */
+.hero {
+    min-height: 100vh;
+    padding: 100px 20px 50px 20px;
+    background: linear-gradient(rgba(180, 85, 58, 0.85), rgba(180, 85, 58, 0.85)), 
+                url('imagens/foto-capa.jpg') center/cover no-repeat;
+    background-color: #C86D51;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #F7F4EF;
+}
+
+/* ÍCONE DAS ALIANÇAS SOBRE O "VAMOS NOS CASAR!" */
+.icon-aliancas {
+    width: 55px;
+    height: auto;
+    margin-bottom: 12px;
+    display: inline-block;
+}
+
+/* NOME DAS NOIVAS COM A FONTE ALEX BRUSH */
+.hero h1 {
+    font-family: 'Alex Brush', cursive;
+    font-size: 5rem;
+    font-weight: normal;
+    margin: 10px 0;
+    color: #F7F4EF;
+}
+
+.sub-title {
+    letter-spacing: 3px;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    color: #F7F4EF;
+}
+
+.date {
+    font-size: 1.2rem;
+    font-style: italic;
+    margin-bottom: 25px;
+    color: #F7F4EF;
+}
+
+/* Quadrados da Contagem Regressiva */
+.countdown {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.countdown div {
+    background: rgba(247, 244, 239, 0.2);
+    backdrop-filter: blur(8px);
+    padding: 12px 18px;
+    border-radius: 8px;
+    min-width: 70px;
+    border: 1px solid rgba(247, 244, 239, 0.4);
+    color: #F7F4EF;
+}
+
+.countdown span {
+    font-size: 1.6rem;
+    font-weight: bold;
+}
+
+.countdown p {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* ==========================================
+   MENSAGEM DE BOAS-VINDAS (EXPANDIDA E FLUIDA)
+   ========================================== */
+.welcome-text {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.05rem;
+    line-height: 1.6;
+    text-align: center;
+    color: #F7F4EF;
+    max-width: 750px;         /* Largura expandida para layout fluido */
+    width: 90%;
+    margin: 35px auto 0 auto;  /* Centralizado na tela */
+}
+
+.welcome-text p {
+    margin-bottom: 12px;
+}
+
+.welcome-text strong {
+    font-weight: 600;
+}
+
+/* ==========================================
+   SEÇÕES E CONTEÚDO
+   ========================================== */
+.section {
+    padding: 90px 20px;
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.bg-light {
+    background-color: #EDE6DC;
+    max-width: 100%;
+}
+
+.section h2 {
+    font-size: 2.5rem;
+    color: #C86D51;
+}
+
+.divider {
+    width: 50px;
+    height: 3px;
+    background-color: #C86D51;
+    margin: 15px auto 30px auto;
+    border-radius: 2px;
+}
+
+.text {
+    font-size: 1.1rem;
+    color: #5A5045;
+}
+
+.foto-casal-borda {
+    width: 100%;
+    max-width: 500px;
+    border-radius: 12px;
+    margin: 20px 0;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.card {
+    background: #FFFFFF;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    display: inline-block;
+    text-align: left;
+    margin-top: 15px;
+    border-left: 4px solid #C86D51;
+}
+
+/* ==========================================
+   FORMULÁRIO RSVP
+   ========================================== */
+.rsvp-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.rsvp-form input, .rsvp-form select {
+    padding: 14px;
+    border: 1px solid #D1C7BD;
+    border-radius: 8px;
+    font-size: 1rem;
+    background-color: #FFFFFF;
+    color: #4A4238;
+}
+
+/* ==========================================
+   BOTÕES
+   ========================================== */
+.btn, .btn-upload {
+    background-color: #C86D51;
+    color: #ffffff;
+    border: none;
+    border-radius: 50px;
+    padding: 14px 28px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.btn:hover, .btn-upload:hover {
+    background-color: #A3523A;
+    transform: translateY(-2px);
+}
+
+/* ==========================================
+   RODAPÉ
+   ========================================== */
+footer {
+    text-align: center;
+    padding: 30px;
+    background-color: #E2D7C7;
+    color: #4A4238;
+    font-size: 0.95rem;
+}
