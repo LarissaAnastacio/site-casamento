@@ -97,7 +97,7 @@
         </div>
     </section>
 
-    <!-- Seção Envio de Fotos e Vídeos (Configurado com FormSubmit e Câmera) -->
+    <!-- Seção Envio de Fotos e Vídeos (Configurado com Web3Forms) -->
     <section id="galeria" class="section bg-light">
         <h2>📷 Compartilhe suas fotos e vídeos conosco!</h2>
         <div class="divider"></div>
@@ -105,17 +105,17 @@
             Registre os momentos especiais do nosso casamento! Tire uma foto ou grave um vídeo agora mesmo e envie direto para o nosso e-mail.
         </p>
 
-        <!-- Formulário configurado com o e-mail real e atributos de nome -->
-        <form action="https://formsubmit.co/casamentoreginaemarina@gmail.com" method="POST" enctype="multipart/form-data" class="rsvp-form" style="margin-top: 20px;">
+        <!-- Formulário configurado com Web3Forms -->
+        <form action="https://api.web3forms.com/submit" method="POST" enctype="multipart/form-data" class="rsvp-form" style="margin-top: 20px;">
             
-            <!-- Configurações ocultas do FormSubmit -->
-            <input type="hidden" name="_subject" value="Nova Foto/Vídeo do Casamento!">
-            <input type="hidden" name="_captcha" value="false">
+            <!-- Cole sua Access Key gerada no site web3forms.com abaixo -->
+            <input type="hidden" name="access_key" value="203c6bfc-f426-41c8-95d7-3f34340c82ec">
+            <input type="hidden" name="subject" value="Nova Mídia do Casamento!">
 
-            <!-- Campo com o atributo name exigido -->
+            <!-- Campo com o nome do convidado -->
             <input type="text" name="Nome do Convidado" placeholder="Seu Nome" required>
 
-            <!-- Campo de Mídia com acionamento de câmera e atributo name exigido -->
+            <!-- Campo de Mídia com acionamento de câmera -->
             <label style="font-size: 14px; font-weight: bold; color: #555; text-align: left; display: block; margin-top: 10px;">
                 Selecione ou Tire a Foto/Vídeo:
             </label>
