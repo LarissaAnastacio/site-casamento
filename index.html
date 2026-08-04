@@ -11,7 +11,7 @@
       gtag('config', 'G-4WF4470FNS');
     </script>
 
-    <!-- Importação das fontes do Google Fonts (Montserrat + Alex Brush + Cormorant Garamond) -->
+    <!-- Importação das fontes do Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cormorant+Garamond:wght@600;700&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
@@ -59,18 +59,18 @@
         </div>
     </header>
 
-    <!-- Seção Confirmar Presença (RSVP - Posicionada logo abaixo da capa e contagem) -->
+    <!-- Seção Confirmar Presença (RSVP) -->
     <section id="rsvp" class="section">
         <h2>Confirmar Presença</h2>
         <div class="divider"></div>
         <form class="rsvp-form" onsubmit="enviarWhatsApp(event)">
-            <input type="text" id="nome" placeholder="Seu nome completo" required>
-            <select id="confirmacao" required>
+            <input type="text" id="nome" name="Nome Completo" placeholder="Seu nome completo" required>
+            <select id="confirmacao" name="Status de Presença" required>
                 <option value="">Você irá ao evento?</option>
                 <option value="Sim, com certeza!">Sim, com certeza estarei lá!</option>
                 <option value="Infelizmente não poderei ir.">Infelizmente não poderei ir</option>
             </select>
-            <input type="number" id="acompanhantes" placeholder="Quantidade de acompanhantes" min="0" required>
+            <input type="number" id="acompanhantes" name="Quantidade de Acompanhantes" placeholder="Quantidade de acompanhantes" min="0" required>
             <button type="submit" class="btn">Confirmar via WhatsApp</button>
         </form>
     </section>
@@ -97,7 +97,7 @@
         </div>
     </section>
 
-    <!-- Seção Envio de Fotos e Vídeos (Direto para o E-mail e acionando Câmera) -->
+    <!-- Seção Envio de Fotos e Vídeos (Configurado com FormSubmit e Câmera) -->
     <section id="galeria" class="section bg-light">
         <h2>📷 Compartilhe suas fotos e vídeos conosco!</h2>
         <div class="divider"></div>
@@ -105,17 +105,17 @@
             Registre os momentos especiais do nosso casamento! Tire uma foto ou grave um vídeo agora mesmo e envie direto para o nosso e-mail.
         </p>
 
-        <!-- Formulário com envio direto para o E-mail -->
+        <!-- Formulário configurado com o e-mail real e atributos de nome -->
         <form action="https://formsubmit.co/casamentoreginaemarina@gmail.com" method="POST" enctype="multipart/form-data" class="rsvp-form" style="margin-top: 20px;">
             
-            <!-- Configurações do FormSubmit -->
+            <!-- Configurações ocultas do FormSubmit -->
             <input type="hidden" name="_subject" value="Nova Foto/Vídeo do Casamento!">
             <input type="hidden" name="_captcha" value="false">
 
-            <!-- Campo para o Convidado colocar o Nome -->
+            <!-- Campo com o atributo name exigido -->
             <input type="text" name="Nome do Convidado" placeholder="Seu Nome" required>
 
-            <!-- Botão que abre a Câmera ou Galeria do Celular -->
+            <!-- Campo de Mídia com acionamento de câmera e atributo name exigido -->
             <label style="font-size: 14px; font-weight: bold; color: #555; text-align: left; display: block; margin-top: 10px;">
                 Selecione ou Tire a Foto/Vídeo:
             </label>
@@ -131,7 +131,5 @@
     </footer>
 
     <script src="script.js"></script>
-</body>
-</html>
 </body>
 </html>
