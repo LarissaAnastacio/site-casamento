@@ -29,6 +29,7 @@
         <a href="#rsvp">Confirmar Presença</a>
         <a href="#historia">Nossa História</a>
         <a href="#evento">O Evento</a>
+        <a href="#galeria">Fotos</a>
     </nav>
 
     <!-- Capa do Site -->
@@ -96,19 +97,33 @@
         </div>
     </section>
 
-    <!-- Seção Envio de Fotos -->
+    <!-- Seção Envio de Fotos e Vídeos (Direto para o E-mail e acionando Câmera) -->
     <section id="galeria" class="section bg-light">
-        <h2>📷 Compartilhe suas fotos conosco!</h2>
+        <h2>📷 Compartilhe suas fotos e vídeos conosco!</h2>
         <div class="divider"></div>
         <p class="text">
-            A nossa jornada é construída dia a dia, cheia de amor, cumplicidade 
-            e sonhos compartilhados. Estamos radiantes por celebrar o capítulo 
-            mais importante de nossas vidas com vocês, nossos amigos e familiares amados!
+            Registre os momentos especiais do nosso casamento! Tire uma foto ou grave um vídeo agora mesmo e envie direto para o nosso e-mail.
         </p>
-        <br>
-        <a href="https://docs.google.com/forms/d/e/1FAIpQLSdoryPe89VQi-zNGaY_6b2jbA8RPVqG1VPlmHIacBsW2FgmeQ/viewform?usp=sharing&ouid=103458505567152603913" target="_blank" class="btn btn-upload">
-            📷 Enviar Fotos / Vídeos
-        </a>
+
+        <!-- Formulário com envio direto para o E-mail -->
+        <form action="https://formsubmit.co/SEU_EMAIL_AQUI@gmail.com" method="POST" enctype="multipart/form-data" class="rsvp-form" style="margin-top: 20px;">
+            
+            <!-- Configurações do FormSubmit -->
+            <input type="hidden" name="_subject" value="Nova Foto/Vídeo do Casamento!">
+            <input type="hidden" name="_captcha" value="false">
+
+            <!-- Campo para o Convidado colocar o Nome -->
+            <input type="text" name="Nome do Convidado" placeholder="Seu Nome" required>
+
+            <!-- Botão que abre a Câmera ou Galeria do Celular -->
+            <label style="font-size: 14px; font-weight: bold; color: #555; text-align: left; display: block; margin-top: 10px;">
+                Selecione ou Tire a Foto/Vídeo:
+            </label>
+            <input type="file" name="midia" accept="image/*,video/*" capture="environment" required style="background: white; padding: 10px;">
+
+            <!-- Botão de Envio -->
+            <button type="submit" class="btn btn-upload">📤 Enviar Mídia</button>
+        </form>
     </section>
 
     <footer>
@@ -116,5 +131,7 @@
     </footer>
 
     <script src="script.js"></script>
+</body>
+</html>
 </body>
 </html>
