@@ -23,16 +23,16 @@
 </head>
 <body>
 
-    <!-- Menu de Navegação (Reordenado) -->
+    <!-- Menu de Navegação -->
     <nav class="navbar">
         <a href="#home">Início</a>
-        <a href="#historia">Nossa História</a>
         <a href="#rsvp">Confirmar Presença</a>
+        <a href="#historia">Nossa História</a>
         <a href="#evento">O Evento</a>
         <a href="#galeria">Fotos</a>
     </nav>
 
-    <!-- 1. Capa do Site & Contagem Regressiva -->
+    <!-- Capa do Site -->
     <header id="home" class="hero">
         <div class="hero-content">
             <!-- Ícone das Alianças -->
@@ -59,17 +59,7 @@
         </div>
     </header>
 
-    <!-- 2. Seção Nossa História -->
-    <section id="historia" class="section bg-light">
-        <h2>Nossa História</h2>
-        <div class="divider"></div>
-        <p class="text">
-            O amor não surge por acaso, ele é construído nos pequenos detalhes. 
-            Aqui começou nossa jornada e estamos ansiosos para celebrar este dia tão especial com você!
-        </p>
-    </section>
-
-    <!-- 3. Seção Confirmar Presença (RSVP) -->
+    <!-- Seção Confirmar Presença (RSVP) -->
     <section id="rsvp" class="section">
         <h2>Confirmar Presença</h2>
         <div class="divider"></div>
@@ -85,8 +75,18 @@
         </form>
     </section>
 
-    <!-- 4. Seção O Evento -->
-    <section id="evento" class="section bg-light">
+    <!-- Seção Nossa História -->
+    <section id="historia" class="section bg-light">
+        <h2>Nossa História</h2>
+        <div class="divider"></div>
+        <p class="text">
+            O amor não surge por acaso, ele é construído nos pequenos detalhes. 
+            Aqui começou nossa jornada e estamos ansiosos para celebrar este dia tão especial com você!
+        </p>
+    </section>
+
+    <!-- Seção O Evento -->
+    <section id="evento" class="section">
         <h2>O Evento</h2>
         <div class="divider"></div>
         
@@ -97,8 +97,8 @@
         </div>
     </section>
 
-    <!-- 5. Seção Envio de Fotos e Vídeos (Telegram API) -->
-    <section id="galeria" class="section">
+    <!-- Seção Envio de Fotos e Vídeos (Telegram API) -->
+    <section id="galeria" class="section bg-light">
         <h2>📷 Compartilhe suas fotos e vídeos conosco!</h2>
         <div class="divider"></div>
         <p class="text">
@@ -124,6 +124,7 @@
 
     <script src="script.js"></script>
     <script>
+        // Configuração do Envio via Telegram
         const TELEGRAM_BOT_TOKEN = "COLE_O_TOKEN_DO_BOT_AQUI";
         const TELEGRAM_CHAT_ID = "COLE_O_SEU_CHAT_ID_AQUI";
 
@@ -143,10 +144,11 @@
             statusMsg.innerText = "Enviando arquivo, aguarde...";
 
             const formData = new FormData();
-            formData.append('chat_id', TELEGRAM_CHAT_ID.trim());
+            formData.append('chat_id', TELEGRAM_CHAT_ID);
             formData.append('caption', `📷 *Nova Mídia do Casamento!*\n👤 *De:* ${nome}`);
             formData.append('parse_mode', 'Markdown');
 
+            // Define se é foto ou vídeo
             let endpoint = 'sendDocument';
             if (file.type.startsWith('image/')) {
                 endpoint = 'sendPhoto';
@@ -171,14 +173,11 @@
                     statusMsg.innerText = "✅ Mídia enviada com sucesso! Muito obrigado!";
                     document.getElementById('mediaForm').reset();
                 } else {
-                    if (result.description.includes("chat not found")) {
-                        throw new Error("Chat ID incorreto ou você ainda não enviou /start para o Bot no Telegram.");
-                    }
                     throw new Error(result.description);
                 }
             } catch (error) {
                 statusMsg.style.color = 'red';
-                statusMsg.innerText = "❌ " + error.message;
+                statusMsg.innerText = "❌ Erro ao enviar: " + error.message;
             } finally {
                 btn.disabled = false;
             }
