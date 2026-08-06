@@ -25,42 +25,38 @@
             text-align: center;
         }
 
-        /* NAVBAR (ÍCONES NATIVOS ALINHADOS Á ESQUERDA) */
+        /* NAVBAR FIXA E COMPACTADA PARA NÃO COBRIR O CONTEÚDO */
         .navbar {
             display: flex;
-            flex-wrap: wrap;
             justify-content: center;
             align-items: center;
-            gap: 10px 18px;
+            gap: 15px;
             background-color: #fcf8f2;
-            padding: 14px 10px;
+            padding: 12px 10px;
             position: sticky;
             top: 0;
             z-index: 1000;
             box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+            overflow-x: auto;
+            white-space: nowrap;
         }
 
         .nav-link {
-            display: inline-flex !important;
-            flex-direction: row !important;
-            align-items: center !important;
-            justify-content: center !important;
-            gap: 6px;
-            color: #b86249 !important;
-            text-decoration: none !important;
-            font-size: 12px;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            color: #b86249;
+            text-decoration: none;
+            font-size: 11px;
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 0.5px;
-            white-space: nowrap !important;
             -webkit-tap-highlight-color: transparent;
         }
 
         .icon {
-            font-size: 15px;
+            font-size: 13px;
             line-height: 1;
-            display: inline-block;
-            font-style: normal;
         }
 
         .nav-link:hover {
@@ -71,7 +67,7 @@
         .hero {
             background-color: #ba6349;
             color: #ffffff;
-            padding: 40px 20px;
+            padding: 50px 20px 40px 20px;
         }
 
         .hero-content {
@@ -151,7 +147,7 @@
             margin-bottom: 16px;
         }
 
-        /* SEÇÃO NOSSA HISTÓRIA E FOTOS */
+        /* SEÇÕES */
         .section {
             padding: 50px 20px;
         }
@@ -262,21 +258,12 @@
             font-size: 13px;
         }
 
-        /* AJUSTES MOBILE (ANDROID E IOS) */
-        @media (max-width: 600px) {
+        /* AJUSTES MOBILE EXTRAS */
+        @media (max-width: 768px) {
             .navbar {
-                gap: 8px 10px;
-                padding: 10px 4px;
+                justify-content: flex-start;
+                padding: 10px 15px;
             }
-            
-            .nav-link {
-                font-size: 10px;
-            }
-
-            .icon {
-                font-size: 12px;
-            }
-
             h1 {
                 font-size: 44px;
             }
@@ -285,26 +272,26 @@
 </head>
 <body>
 
-    <!-- MENU DE NAVEGAÇÃO NATIVO (ÍCONES GARANTIDOS) -->
+    <!-- MENU DE NAVEGAÇÃO UNIFICADO (PC E MOBILE) -->
     <nav class="navbar">
         <a href="#inicio" class="nav-link">
-            <span class="icon">&#8962;</span>
+            <span class="icon">🏠</span>
             <span>INÍCIO</span>
         </a>
         <a href="#historia" class="nav-link">
-            <span class="icon">&#9825;</span>
+            <span class="icon">♥</span>
             <span>NOSSA HISTÓRIA</span>
         </a>
         <a href="#rsvp" class="nav-link">
-            <span class="icon">&#9812;</span>
+            <span class="icon">📋</span>
             <span>CONFIRMAR PRESENÇA</span>
         </a>
         <a href="#evento" class="nav-link">
-            <span class="icon">&#8982;</span>
+            <span class="icon">📍</span>
             <span>O EVENTO</span>
         </a>
         <a href="#fotos" class="nav-link">
-            <span class="icon">&#128247;</span>
+            <span class="icon">📷</span>
             <span>FOTOS</span>
         </a>
     </nav>
@@ -353,7 +340,6 @@
         <p class="text">
             Um pequeno resumo sobre o encontro e a jornada das duas até o grande dia.
         </p>
-        <!-- IMAGEM ATUALIZADA COM O NOME EXATO -->
         <img src="imagens/Nossa história.jpeg" alt="Foto Nossa História" class="foto-destaque">
     </section>
 
@@ -390,7 +376,7 @@
     </section>
 
     <!-- FOTOS -->
-    <section id="fotos" class="section bg-light">
+    <main id="fotos" class="section bg-light">
         <h2>Galeria de Fotos</h2>
         <div class="divider"></div>
         <p class="text">Alguns dos nossos momentos favoritos juntos.</p>
@@ -398,7 +384,7 @@
             <img src="imagens/Fotos.jpeg" alt="Galeria Foto 1">
             <img src="imagens/Inicio.jpeg" alt="Galeria Foto 2">
         </div>
-    </section>
+    </main>
 
     <!-- RODAPÉ -->
     <footer>
