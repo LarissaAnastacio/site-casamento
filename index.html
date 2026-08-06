@@ -31,41 +31,64 @@
         body {
             font-family: 'Montserrat', sans-serif;
             color: #4a4a4a;
-            background-color: #fdfbf7;
+            background-color: #2b2b2b; /* Fundo escuro elegante nas laterais em telas de PC */
             text-align: center;
-        }
-
-        /* NAVBAR FIXA E COMPACTADA PARA NÃO COBRIR O CONTEÚDO */
-        .navbar {
             display: flex;
             justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+        }
+
+        /* CONTAINER FIXO/RESPONSIVO DE 375px a 390px (COM SUPORTE A PC E MOBILE) */
+        .site-container {
+            width: 100%;
+            max-width: 390px;
+            min-width: 375px;
+            background-color: #fdfbf7;
+            box-shadow: 0 0 25px rgba(0, 0, 0, 0.4);
+            position: relative;
+            overflow-x: hidden;
+            text-align: center;
+            min-height: 100vh;
+        }
+
+        /* NAVBAR FIXA E COMPACTADA */
+        .navbar {
+            display: flex;
+            justify-content: flex-start;
             align-items: center;
-            gap: 15px;
+            gap: 12px;
             background-color: #fcf8f2;
-            padding: 12px 10px;
+            padding: 10px 12px;
             position: sticky;
             top: 0;
             z-index: 1000;
             box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
             overflow-x: auto;
             white-space: nowrap;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .navbar::-webkit-scrollbar {
+            display: none; /* Esconde a barra de rolagem no mobile */
         }
 
         .nav-link {
             display: inline-flex;
             align-items: center;
-            gap: 5px;
+            gap: 4px;
             color: #b86249;
             text-decoration: none;
-            font-size: 11px;
+            font-size: 10px;
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 0.5px;
             -webkit-tap-highlight-color: transparent;
+            flex-shrink: 0;
         }
 
         .icon {
-            font-size: 13px;
+            font-size: 12px;
             line-height: 1;
         }
 
@@ -77,61 +100,54 @@
         .hero {
             background-color: #ba6349;
             color: #ffffff;
-            padding: 50px 20px 40px 20px;
+            padding: 40px 16px 30px 16px;
         }
 
         .hero-content {
-            max-width: 800px;
+            width: 100%;
             margin: 0 auto;
         }
 
-        .icon-aliancas {
-            width: 70px;
-            height: auto;
-            display: block;
-            margin: 0 auto 12px auto;
-        }
-
         .sub-title {
-            font-size: 13px;
+            font-size: 11px;
             letter-spacing: 2px;
-            margin-bottom: 8px;
+            margin-bottom: 6px;
             font-weight: 400;
         }
 
         h1 {
             font-family: 'Alex Brush', cursive;
-            font-size: 60px;
+            font-size: 52px;
             font-weight: normal;
-            margin: 5px 0 15px 0;
+            margin: 5px 0 10px 0;
             line-height: 1.1;
         }
 
         .date {
             font-family: 'Cormorant Garamond', serif;
             font-style: italic;
-            font-size: 24px;
-            margin-bottom: 30px;
+            font-size: 22px;
+            margin-bottom: 25px;
         }
 
         /* CONTAGEM REGRESSIVA */
         .countdown {
             display: flex;
             justify-content: center;
-            gap: 10px;
-            margin-bottom: 35px;
+            gap: 8px;
+            margin-bottom: 25px;
         }
 
         .countdown div {
             border: 1px solid rgba(255, 255, 255, 0.5);
-            border-radius: 8px;
-            padding: 10px 4px;
-            width: 70px;
+            border-radius: 6px;
+            padding: 8px 2px;
+            width: 65px;
             background: rgba(255, 255, 255, 0.05);
         }
 
         .countdown span {
-            font-size: 22px;
+            font-size: 20px;
             font-weight: 600;
             display: block;
             line-height: 1;
@@ -139,27 +155,27 @@
         }
 
         .countdown p {
-            font-size: 10px;
+            font-size: 9px;
             text-transform: uppercase;
             letter-spacing: 1px;
         }
 
         /* MENSAGEM DE BOAS-VINDAS */
         .welcome-text {
-            max-width: 680px;
+            width: 100%;
             margin: 0 auto;
-            font-size: 14px;
-            line-height: 1.7;
+            font-size: 13px;
+            line-height: 1.6;
             font-weight: 300;
         }
 
         .welcome-text p {
-            margin-bottom: 16px;
+            margin-bottom: 14px;
         }
 
         /* SEÇÕES */
         .section {
-            padding: 50px 20px;
+            padding: 40px 16px;
         }
 
         .bg-light {
@@ -168,34 +184,40 @@
 
         h2 {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 36px;
+            font-size: 30px;
             color: #b86249;
             font-weight: 600;
+            line-height: 1.2;
         }
 
         .divider {
-            width: 60px;
+            width: 50px;
             height: 2px;
             background-color: #b86249;
-            margin: 12px auto 25px auto;
+            margin: 10px auto 20px auto;
+        }
+
+        .text {
+            font-size: 13px;
+            line-height: 1.6;
         }
 
         /* FORMULÁRIO DE CONFIRMAÇÃO */
         .rsvp-form {
-            max-width: 400px;
+            width: 100%;
             margin: 0 auto;
             display: flex;
             flex-direction: column;
-            gap: 15px;
+            gap: 12px;
         }
 
         .rsvp-form input, 
         .rsvp-form select {
             width: 100%;
-            padding: 14px;
+            padding: 12px;
             border: 1px solid #ddd;
             border-radius: 6px;
-            font-size: 14px;
+            font-size: 13px;
             outline: none;
             font-family: 'Montserrat', sans-serif;
             background: white;
@@ -205,11 +227,12 @@
             background-color: #b86249;
             color: #fff;
             border: none;
-            padding: 14px;
+            padding: 12px;
             border-radius: 6px;
             font-weight: 600;
             cursor: pointer;
-            font-size: 14px;
+            font-size: 13px;
+            width: 100%;
         }
 
         .btn:hover {
@@ -219,9 +242,9 @@
         /* CARD DO EVENTO */
         .card {
             background: white;
-            padding: 25px;
+            padding: 20px 16px;
             border-radius: 8px;
-            max-width: 400px;
+            width: 100%;
             margin: 0 auto;
             box-shadow: 0 4px 15px rgba(0,0,0,0.04);
             text-align: left;
@@ -229,135 +252,131 @@
 
         .card h3 {
             color: #b86249;
-            margin-bottom: 12px;
+            margin-bottom: 10px;
+            font-size: 18px;
         }
 
         .card p {
-            margin-bottom: 8px;
-            font-size: 14px;
+            margin-bottom: 6px;
+            font-size: 13px;
         }
 
         /* RODAPÉ */
         footer {
             background-color: #2b2b2b;
             color: #fff;
-            padding: 24px;
-            font-size: 13px;
-        }
-
-        /* AJUSTES MOBILE EXTRAS */
-        @media (max-width: 768px) {
-            .navbar {
-                justify-content: flex-start;
-                padding: 10px 15px;
-            }
-            h1 {
-                font-size: 44px;
-            }
+            padding: 20px 16px;
+            font-size: 11px;
         }
     </style>
 </head>
 <body>
 
-    <!-- Menu de Navegação -->
-    <nav class="navbar">
-        <a href="#inicio" class="nav-link"><span class="icon">🏠</span> <span>Início</span></a>
-        <a href="#rsvp" class="nav-link"><span class="icon">📋</span> <span>Confirmar Presença</span></a>
-        <a href="#historia" class="nav-link"><span class="icon">♥</span> <span>Nossa História</span></a>
-        <a href="#evento" class="nav-link"><span class="icon">📍</span> <span>O Evento</span></a>
-        <a href="#galeria" class="nav-link"><span class="icon">📷</span> <span>Fotos</span></a>
-    </nav>
+    <!-- INÍCIO DO CONTAINER DE TAMANHO PADRÃO (375px a 390px) -->
+    <div class="site-container">
 
-    <!-- Capa do Site -->
-    <header id="inicio" class="hero">
-        <div class="hero-content">
-            <p class="sub-title">VAMOS NOS CASAR!</p>
-            <h1>Regina & Marina</h1>
-            <p class="date">2 de Maio de 2027</p>
+        <!-- Menu de Navegação -->
+        <nav class="navbar">
+            <a href="#inicio" class="nav-link"><span class="icon">🏠</span> <span>Início</span></a>
+            <a href="#rsvp" class="nav-link"><span class="icon">📋</span> <span>Confirmação</span></a>
+            <a href="#historia" class="nav-link"><span class="icon">♥</span> <span>História</span></a>
+            <a href="#evento" class="nav-link"><span class="icon">📍</span> <span>O Evento</span></a>
+            <a href="#galeria" class="nav-link"><span class="icon">📷</span> <span>Fotos</span></a>
+        </nav>
+
+        <!-- Capa do Site -->
+        <header id="inicio" class="hero">
+            <div class="hero-content">
+                <p class="sub-title">VAMOS NOS CASAR!</p>
+                <h1>Regina & Marina</h1>
+                <p class="date">2 de Maio de 2027</p>
+                
+                <!-- Contagem Regressiva -->
+                <div id="countdown" class="countdown">
+                    <div><span id="days">282</span><p>Dias</p></div>
+                    <div><span id="hours">03</span><p>Horas</p></div>
+                    <div><span id="minutes">48</span><p>Min</p></div>
+                    <div><span id="seconds">56</span><p>Seg</p></div>
+                </div>
+
+                <!-- Mensagem de Boas-Vindas -->
+                <div class="welcome-text">
+                    <p>Criamos este espaço com todo o carinho do mundo para compartilhar com vocês os detalhes desse momento tão especial das nossas vidas. Saber que teremos as pessoas que mais amamos ao nosso lado torna tudo ainda mais inesquecível!</p>
+                    <p>Para nos ajudar a preparar cada detalhe com muito amor, pedimos a gentileza de confirmar sua presença. É bem simples: basta preencher os dados abaixo no menu <strong>“Confirmação”</strong>.</p>
+                    <p>A contagem regressiva já começou e mal podemos esperar para celebrar esse dia tão nosso com vocês!</p>
+                </div>
+            </div>
+        </header>
+
+        <!-- Seção Confirmar Presença (RSVP) -->
+        <section id="rsvp" class="section">
+            <h2>Confirmar Presença</h2>
+            <div class="divider"></div>
+            <form class="rsvp-form" onsubmit="enviarWhatsApp(event)">
+                <input type="text" id="nome" name="Nome Completo" placeholder="Seu nome completo" required>
+                <select id="confirmacao" name="Status de Presença" required>
+                    <option value="">Você irá ao evento?</option>
+                    <option value="Sim, com certeza!">Sim, com certeza estarei lá!</option>
+                    <option value="Infelizmente não poderei ir.">Infelizmente não poderei ir</option>
+                </select>
+                <input type="number" id="acompanhantes" name="Quantidade de Acompanhantes" placeholder="Quantidade de acompanhantes" min="0" required>
+                <button type="submit" class="btn">Confirmar via WhatsApp</button>
+            </form>
+        </section>
+
+        <!-- Seção Nossa História -->
+        <section id="historia" class="section bg-light">
+            <h2>Nossa História</h2>
+            <div class="divider"></div>
+            <p class="text">
+                O amor não surge por acaso, ele é construído nos pequenos detalhes. 
+                Aqui começou nossa jornada e estamos ansiosos para celebrar este dia tão especial com você!
+            </p>
+        </section>
+
+        <!-- Seção O Evento -->
+        <section id="evento" class="section">
+            <h2>O Evento</h2>
+            <div class="divider"></div>
             
-            <!-- Contagem Regressiva -->
-            <div id="countdown" class="countdown">
-                <div><span id="days">282</span><p>Dias</p></div>
-                <div><span id="hours">03</span><p>Horas</p></div>
-                <div><span id="minutes">48</span><p>Min</p></div>
-                <div><span id="seconds">56</span><p>Seg</p></div>
+            <div class="event-details" style="margin-top: 20px;">
+                <div class="card">
+                    <h3>Cerimônia & Recepção</h3>
+                    <p><strong>Data:</strong> 2 de Maio de 2027</p>
+                    <p><strong>Horário:</strong> 16:00h</p>
+                    <p><strong>Local:</strong> Espaço das Festas - Nome do Local</p>
+                    <p><strong>Endereço:</strong> Rua Exemplo, 123 - Cidade/UF</p>
+                </div>
             </div>
+        </section>
 
-            <!-- Mensagem de Boas-Vindas -->
-            <div class="welcome-text">
-                <p>Criamos este espaço com todo o carinho do mundo para compartilhar com vocês os detalhes desse momento tão especial das nossas vidas. Saber que teremos as pessoas que mais amamos ao nosso lado torna tudo ainda mais inesquecível!</p>
-                <p>Para nos ajudar a preparar cada detalhe com muito amor, pedimos a gentileza de confirmar sua presença. É bem simples: basta preencher os dados abaixo no menu <strong>“Confirmar Presença”</strong>.</p>
-                <p>A contagem regressiva já começou e mal podemos esperar para celebrar esse dia tão nosso com vocês!</p>
-            </div>
-        </div>
-    </header>
+        <!-- Seção Envio de Fotos e Vídeos (Telegram API) -->
+        <section id="galeria" class="section bg-light">
+            <h2>📷 Compartilhe suas fotos e vídeos conosco!</h2>
+            <div class="divider"></div>
+            <p class="text">
+                Registre os momentos especiais do nosso casamento! Tire uma foto ou grave um vídeo agora mesmo e envie diretamente para nós.
+            </p>
 
-    <!-- Seção Confirmar Presença (RSVP) -->
-    <section id="rsvp" class="section">
-        <h2>Confirmar Presença</h2>
-        <div class="divider"></div>
-        <form class="rsvp-form" onsubmit="enviarWhatsApp(event)">
-            <input type="text" id="nome" name="Nome Completo" placeholder="Seu nome completo" required>
-            <select id="confirmacao" name="Status de Presença" required>
-                <option value="">Você irá ao evento?</option>
-                <option value="Sim, com certeza!">Sim, com certeza estarei lá!</option>
-                <option value="Infelizmente não poderei ir.">Infelizmente não poderei ir</option>
-            </select>
-            <input type="number" id="acompanhantes" name="Quantidade de Acompanhantes" placeholder="Quantidade de acompanhantes" min="0" required>
-            <button type="submit" class="btn">Confirmar via WhatsApp</button>
-        </form>
-    </section>
+            <form id="mediaForm" class="rsvp-form" style="margin-top: 20px;">
+                <input type="text" id="nomeConvidado" placeholder="Seu Nome" required>
 
-    <!-- Seção Nossa História -->
-    <section id="historia" class="section bg-light">
-        <h2>Nossa História</h2>
-        <div class="divider"></div>
-        <p class="text">
-            O amor não surge por acaso, ele é construído nos pequenos detalhes. 
-            Aqui começou nossa jornada e estamos ansiosos para celebrar este dia tão especial com você!
-        </p>
-    </section>
+                <label style="font-size: 13px; font-weight: bold; color: #555; text-align: left; display: block; margin-top: 5px;">
+                    Selecione ou Tire a Foto/Vídeo:
+                </label>
+                <input type="file" id="midiaInput" accept="image/*,video/*" required style="background: white; padding: 10px; font-size: 12px;">
 
-    <!-- Seção O Evento -->
-    <section id="evento" class="section">
-        <h2>O Evento</h2>
-        <div class="divider"></div>
-        
-        <div class="event-details" style="margin-top: 30px;">
-            <div class="card">
-                <h3>Cerimônia & Recepção</h3>
-                <p><strong>Data:</strong> 2 de Maio de 2027</p>
-                <p><strong>Horário:</strong> 16:00h</p>
-                <p><strong>Local:</strong> Espaço das Festas - Nome do Local</p>
-                <p><strong>Endereço:</strong> Rua Exemplo, 123 - Cidade/UF</p>
-            </div>
-        </div>
-    </section>
+                <button type="submit" id="btnEnviar" class="btn btn-upload">📤 Enviar Mídia</button>
+            </form>
+            <p id="statusMsg" style="margin-top: 15px; font-weight: bold; font-size: 12px;"></p>
+        </section>
 
-    <!-- Seção Envio de Fotos e Vídeos (Telegram API) - Mantido igual ao código antigo -->
-    <section id="galeria" class="section bg-light">
-        <h2>📷 Compartilhe suas fotos e vídeos conosco!</h2>
-        <div class="divider"></div>
-        <p class="text">
-            Registre os momentos especiais do nosso casamento! Tire uma foto ou grave um vídeo agora mesmo e envie diretamente para nós.
-        </p>
+        <footer>
+            <p>© 2026 - Desenvolvido por <strong>Larissa da Silva Anastácio</strong> | Todos os direitos reservados.</p>
+        </footer>
 
-        <form id="mediaForm" class="rsvp-form" style="margin-top: 20px;">
-            <input type="text" id="nomeConvidado" placeholder="Seu Nome" required>
-
-            <label style="font-size: 14px; font-weight: bold; color: #555; text-align: left; display: block; margin-top: 10px;">
-                Selecione ou Tire a Foto/Vídeo:
-            </label>
-            <input type="file" id="midiaInput" accept="image/*,video/*" required style="background: white; padding: 10px;">
-
-            <button type="submit" id="btnEnviar" class="btn btn-upload">📤 Enviar Mídia</button>
-        </form>
-        <p id="statusMsg" style="margin-top: 15px; font-weight: bold;"></p>
-    </section>
-
-    <footer>
-        <p>© 2026 - Desenvolvido por <strong>Larissa da Silva Anastácio</strong> | Todos os direitos reservados.</p>
-    </footer>
+    </div>
+    <!-- FIM DO CONTAINER DE TAMANHO PADRÃO -->
 
     <script src="script.js"></script>
     <script>
@@ -390,7 +409,6 @@
             statusMsg.innerText = "Processando e enviando arquivo, aguarde...";
 
             try {
-                // Leitura do arquivo como Blob limpo para evitar trava do iOS/Safari
                 const fileArrayBuffer = await file.arrayBuffer();
                 const cleanBlob = new Blob([fileArrayBuffer], { type: file.type || 'image/jpeg' });
 
