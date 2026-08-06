@@ -9,7 +9,7 @@
 
 html {
     scroll-behavior: smooth;
-    scroll-padding-top: 70px; /* Evita que o menu cubra o topo das seções ao navegar */
+    scroll-padding-top: 75px; /* Evita que o menu cubra os títulos ao clicar no link */
 }
 
 body {
@@ -17,7 +17,7 @@ body {
     color: #4A4238; /* Grafite quente elegante */
     background-color: #F7F4EF; /* Cor Palha suave */
     line-height: 1.6;
-    overflow-x: hidden; /* Previne rolagem lateral no celular */
+    overflow-x: hidden; /* Evita rolagem lateral no celular */
 }
 
 h1, h2, h3 {
@@ -33,7 +33,7 @@ h1, h2, h3 {
     top: 0;
     left: 0;
     width: 100%;
-    background: rgba(247, 244, 239, 0.95);
+    background-color: #F7F4EF; /* Cor Palha Sólida */
     padding: 15px;
     display: flex;
     justify-content: center;
@@ -46,7 +46,7 @@ h1, h2, h3 {
 
 .navbar a {
     text-decoration: none;
-    color: #C86D51;
+    color: #C86D51; /* Terracota */
     font-weight: 600;
     font-size: 0.85rem;
     letter-spacing: 1.5px;
@@ -64,14 +64,14 @@ h1, h2, h3 {
 .hero {
     min-height: 100vh;
     padding: 100px 20px 50px 20px;
-    background: linear-gradient(rgba(180, 85, 58, 0.85), rgba(180, 85, 58, 0.85)), 
+    background: linear-gradient(rgba(200, 109, 81, 0.9), rgba(200, 109, 81, 0.9)), 
                 url('imagens/foto-capa.jpg') center/cover no-repeat;
-    background-color: #C86D51;
+    background-color: #C86D51; /* Cor de fundo garantida caso a foto falhe */
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
-    color: #F7F4EF;
+    color: #F7F4EF; /* Texto em Palha */
 }
 
 .hero-content {
@@ -94,7 +94,7 @@ h1, h2, h3 {
     font-size: 5rem;
     font-weight: normal;
     margin: 10px 0;
-    color: #F7F4EF;
+    color: #F7F4EF; /* Texto em Palha */
 }
 
 .sub-title {
@@ -132,6 +132,7 @@ h1, h2, h3 {
     font-size: 1.6rem;
     font-weight: bold;
     display: block;
+    color: #F7F4EF;
 }
 
 .countdown p {
@@ -139,20 +140,21 @@ h1, h2, h3 {
     text-transform: uppercase;
     letter-spacing: 1px;
     margin: 0;
+    color: #F7F4EF;
 }
 
 /* ==========================================
-   MENSAGEM DE BOAS-VINDAS (EXPANDIDA E FLUIDA)
+   MENSAGEM DE BOAS-VINDAS
    ========================================== */
 .welcome-text {
     font-family: 'Montserrat', sans-serif;
     font-size: 1.05rem;
     line-height: 1.6;
     text-align: center;
-    color: #F7F4EF;
-    max-width: 750px;         /* Largura expandida para layout fluido */
+    color: #F7F4EF; /* Mantém Palha na capa */
+    max-width: 750px;
     width: 90%;
-    margin: 35px auto 0 auto;  /* Centralizado na tela */
+    margin: 35px auto 0 auto;
 }
 
 .welcome-text p {
@@ -175,19 +177,19 @@ h1, h2, h3 {
 }
 
 .bg-light {
-    background-color: #EDE6DC;
+    background-color: #EDE6DC; /* Tom palha levemente mais escuro para destaque */
     max-width: 100%;
 }
 
 .section h2 {
     font-size: 2.5rem;
-    color: #C86D51;
+    color: #C86D51; /* Terracota */
 }
 
 .divider {
     width: 50px;
     height: 3px;
-    background-color: #C86D51;
+    background-color: #C86D51; /* Terracota */
     margin: 15px auto 30px auto;
     border-radius: 2px;
 }
@@ -220,7 +222,7 @@ h1, h2, h3 {
 }
 
 /* ==========================================
-   FORMULÁRIO RSVP E GALERIA
+   FORMULÁRIOS
    ========================================== */
 .rsvp-form {
     display: flex;
@@ -241,7 +243,6 @@ h1, h2, h3 {
     background-color: #FFFFFF;
     color: #4A4238;
     outline: none;
-    box-shadow: inset 0 1px 3px rgba(0,0,0,0.03);
 }
 
 .rsvp-form input[type="file"] {
@@ -252,7 +253,7 @@ h1, h2, h3 {
    BOTÕES
    ========================================== */
 .btn, .btn-upload {
-    background-color: #C86D51;
+    background-color: #C86D51; /* Terracota */
     color: #ffffff;
     border: none;
     border-radius: 50px;
@@ -296,39 +297,34 @@ footer {
         scroll-padding-top: 85px;
     }
 
-    /* Ajuste da Barra de Navegação */
     .navbar {
         padding: 10px 5px;
         gap: 6px;
+        background-color: #F7F4EF;
     }
 
     .navbar a {
         font-size: 0.7rem;
         letter-spacing: 0.5px;
+        color: #C86D51;
     }
 
-    /* Área Principal (Hero) */
     .hero {
         padding-top: 110px;
         padding-left: 15px;
         padding-right: 15px;
+        background-color: #C86D51; /* Garante terracota no mobile */
     }
 
     .hero h1 {
-        font-size: 3.5rem; /* Reduz tamanho do nome das noivas para não estourar */
+        font-size: 3.5rem;
+        color: #F7F4EF;
     }
 
-    .sub-title {
-        font-size: 0.8rem;
-        letter-spacing: 2px;
+    .sub-title, .date, .welcome-text {
+        color: #F7F4EF;
     }
 
-    .date {
-        font-size: 1.05rem;
-        margin-bottom: 18px;
-    }
-
-    /* Contagem Regressiva no Celular */
     .countdown {
         gap: 6px;
     }
@@ -336,22 +332,11 @@ footer {
     .countdown div {
         padding: 8px 6px;
         min-width: 52px;
+        background: rgba(247, 244, 239, 0.25);
     }
 
-    .countdown span {
-        font-size: 1.25rem;
-    }
-
-    .countdown p {
-        font-size: 0.65rem;
-        letter-spacing: 0.5px;
-    }
-
-    /* Textos e Seções */
-    .welcome-text {
-        font-size: 0.92rem;
-        margin-top: 25px;
-        width: 100%;
+    .countdown span, .countdown p {
+        color: #F7F4EF;
     }
 
     .section {
@@ -360,15 +345,7 @@ footer {
 
     .section h2 {
         font-size: 2rem;
-    }
-
-    .text {
-        font-size: 0.95rem;
-    }
-
-    /* Formulários e Botões */
-    .rsvp-form {
-        padding: 0 5px;
+        color: #C86D51;
     }
 
     .rsvp-form input, 
@@ -380,5 +357,6 @@ footer {
     .btn, .btn-upload {
         padding: 12px 20px;
         font-size: 0.92rem;
+        background-color: #C86D51;
     }
 }
