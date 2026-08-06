@@ -23,16 +23,16 @@
 </head>
 <body>
 
-    <!-- Menu de Navegação -->
+    <!-- Menu de Navegação ajustado na nova ordem -->
     <nav class="navbar">
         <a href="#home">Início</a>
-        <a href="#rsvp">Confirmar Presença</a>
         <a href="#historia">Nossa História</a>
+        <a href="#rsvp">Confirmar Presença</a>
         <a href="#evento">O Evento</a>
         <a href="#galeria">Fotos</a>
     </nav>
 
-    <!-- Capa do Site -->
+    <!-- 1. Capa e Contagem Regressiva -->
     <header id="home" class="hero">
         <div class="hero-content">
             <!-- Ícone das Alianças -->
@@ -53,13 +53,23 @@
             <!-- Mensagem de Boas-Vindas -->
             <div class="welcome-text">
                 <p>Criamos este espaço com todo o carinho do mundo para compartilhar com vocês os detalhes desse momento tão especial das nossas vidas. Saber que teremos as pessoas que mais amamos ao nosso lado torna tudo ainda mais inesquecível!</p>
-                <p>Para nos ajudar a preparar cada detalhe com muito amor, pedimos a gentileza de confirmar sua presença. É bem simples: basta preencher os dados abaixo no menu <strong>“Confirmar Presença”</strong>.</p>
+                <p>Para nos ajudar a preparar cada detalhe com muito amor, pedimos a gentileza de confirmar sua presença. É bem simples: basta preencher os dados no menu <strong>“Confirmar Presença”</strong>.</p>
                 <p>A contagem regressiva já começou e mal podemos esperar para celebrar esse dia tão nosso com vocês!</p>
             </div>
         </div>
     </header>
 
-    <!-- Seção Confirmar Presença (RSVP) -->
+    <!-- 2. Seção Nossa História -->
+    <section id="historia" class="section bg-light">
+        <h2>Nossa História</h2>
+        <div class="divider"></div>
+        <p class="text">
+            O amor não surge por acaso, ele é construído nos pequenos detalhes. 
+            Aqui começou nossa jornada e estamos ansiosos para celebrar este dia tão especial com você!
+        </p>
+    </section>
+
+    <!-- 3. Seção Confirmar Presença (RSVP) -->
     <section id="rsvp" class="section">
         <h2>Confirmar Presença</h2>
         <div class="divider"></div>
@@ -75,18 +85,8 @@
         </form>
     </section>
 
-    <!-- Seção Nossa História -->
-    <section id="historia" class="section bg-light">
-        <h2>Nossa História</h2>
-        <div class="divider"></div>
-        <p class="text">
-            O amor não surge por acaso, ele é construído nos pequenos detalhes. 
-            Aqui começou nossa jornada e estamos ansiosos para celebrar este dia tão especial com você!
-        </p>
-    </section>
-
-    <!-- Seção O Evento -->
-    <section id="evento" class="section">
+    <!-- 4. Seção O Evento (Local) -->
+    <section id="evento" class="section bg-light">
         <h2>O Evento</h2>
         <div class="divider"></div>
         
@@ -97,8 +97,8 @@
         </div>
     </section>
 
-    <!-- Seção Envio de Fotos e Vídeos (Telegram API) -->
-    <section id="galeria" class="section bg-light">
+    <!-- 5. Seção Envio de Fotos e Vídeos -->
+    <section id="galeria" class="section">
         <h2>📷 Compartilhe suas fotos e vídeos conosco!</h2>
         <div class="divider"></div>
         <p class="text">
@@ -153,7 +153,6 @@
             statusMsg.innerText = "Processando e enviando arquivo, aguarde...";
 
             try {
-                // Leitura do arquivo como Blob limpo para evitar trava do iOS/Safari
                 const fileArrayBuffer = await file.arrayBuffer();
                 const cleanBlob = new Blob([fileArrayBuffer], { type: file.type || 'image/jpeg' });
 
