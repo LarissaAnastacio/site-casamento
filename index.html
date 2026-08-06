@@ -1,14 +1,24 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Regina & Marina - Nosso Casamento</title>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-4WF4470FNS"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
 
-    <!-- Fontes do Google -->
+      gtag('config', 'G-4WF4470FNS');
+    </script>
+
+    <!-- Importação das fontes do Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Regina & Marina - Nosso Casamento</title>
 
     <style>
         /* Reset Básico */
@@ -170,15 +180,6 @@
             margin: 12px auto 25px auto;
         }
 
-        .foto-destaque {
-            max-width: 100%;
-            max-height: 450px;
-            object-fit: cover;
-            border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            margin-top: 20px;
-        }
-
         /* FORMULÁRIO DE CONFIRMAÇÃO */
         .rsvp-form {
             max-width: 400px;
@@ -197,6 +198,7 @@
             font-size: 14px;
             outline: none;
             font-family: 'Montserrat', sans-serif;
+            background: white;
         }
 
         .btn {
@@ -208,6 +210,10 @@
             font-weight: 600;
             cursor: pointer;
             font-size: 14px;
+        }
+
+        .btn:hover {
+            opacity: 0.9;
         }
 
         /* CARD DO EVENTO */
@@ -229,25 +235,6 @@
         .card p {
             margin-bottom: 8px;
             font-size: 14px;
-        }
-
-        /* GALERIA DE FOTOS */
-        .gallery {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 15px;
-            max-width: 800px;
-            margin: 20px auto 0 auto;
-        }
-
-        .gallery img {
-            width: 100%;
-            max-width: 360px;
-            height: 240px;
-            object-fit: cover;
-            border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
         }
 
         /* RODAPÉ */
@@ -272,124 +259,184 @@
 </head>
 <body>
 
-    <!-- MENU DE NAVEGAÇÃO UNIFICADO (PC E MOBILE) -->
+    <!-- Menu de Navegação -->
     <nav class="navbar">
-        <a href="#inicio" class="nav-link">
-            <span class="icon">🏠</span>
-            <span>INÍCIO</span>
-        </a>
-        <a href="#historia" class="nav-link">
-            <span class="icon">♥</span>
-            <span>NOSSA HISTÓRIA</span>
-        </a>
-        <a href="#rsvp" class="nav-link">
-            <span class="icon">📋</span>
-            <span>CONFIRMAR PRESENÇA</span>
-        </a>
-        <a href="#evento" class="nav-link">
-            <span class="icon">📍</span>
-            <span>O EVENTO</span>
-        </a>
-        <a href="#fotos" class="nav-link">
-            <span class="icon">📷</span>
-            <span>FOTOS</span>
-        </a>
+        <a href="#inicio" class="nav-link"><span class="icon">🏠</span> <span>Início</span></a>
+        <a href="#rsvp" class="nav-link"><span class="icon">📋</span> <span>Confirmar Presença</span></a>
+        <a href="#historia" class="nav-link"><span class="icon">♥</span> <span>Nossa História</span></a>
+        <a href="#evento" class="nav-link"><span class="icon">📍</span> <span>O Evento</span></a>
+        <a href="#galeria" class="nav-link"><span class="icon">📷</span> <span>Fotos</span></a>
     </nav>
 
-    <!-- SEÇÃO PRINCIPAL (CAPA / HERO) -->
+    <!-- Capa do Site -->
     <header id="inicio" class="hero">
         <div class="hero-content">
-            <img src="imagens/aliancas.png" alt="Ícone de Alianças" class="icon-aliancas">
             <p class="sub-title">VAMOS NOS CASAR!</p>
             <h1>Regina & Marina</h1>
             <p class="date">2 de Maio de 2027</p>
-
-            <!-- CONTAGEM REGRESSIVA -->
-            <div class="countdown">
-                <div>
-                    <span id="dias">282</span>
-                    <p>DIAS</p>
-                </div>
-                <div>
-                    <span id="horas">03</span>
-                    <p>HORAS</p>
-                </div>
-                <div>
-                    <span id="minutos">48</span>
-                    <p>MIN</p>
-                </div>
-                <div>
-                    <span id="segundos">56</span>
-                    <p>SEG</p>
-                </div>
+            
+            <!-- Contagem Regressiva -->
+            <div id="countdown" class="countdown">
+                <div><span id="days">282</span><p>Dias</p></div>
+                <div><span id="hours">03</span><p>Horas</p></div>
+                <div><span id="minutes">48</span><p>Min</p></div>
+                <div><span id="seconds">56</span><p>Seg</p></div>
             </div>
 
-            <!-- MENSAGEM DE BOAS-VINDAS -->
+            <!-- Mensagem de Boas-Vindas -->
             <div class="welcome-text">
                 <p>Criamos este espaço com todo o carinho do mundo para compartilhar com vocês os detalhes desse momento tão especial das nossas vidas. Saber que teremos as pessoas que mais amamos ao nosso lado torna tudo ainda mais inesquecível!</p>
-                <p>Para nos ajudar a preparar cada detalhe com muito amor, pedimos a gentileza de confirmar sua presença. É bem simples: basta preencher os dados no menu <strong>“Confirmar Presença”</strong>.</p>
+                <p>Para nos ajudar a preparar cada detalhe com muito amor, pedimos a gentileza de confirmar sua presença. É bem simples: basta preencher os dados abaixo no menu <strong>“Confirmar Presença”</strong>.</p>
                 <p>A contagem regressiva já começou e mal podemos esperar para celebrar esse dia tão nosso com vocês!</p>
             </div>
         </div>
     </header>
 
-    <!-- NOSSA HISTÓRIA -->
-    <section id="historia" class="section">
+    <!-- Seção Confirmar Presença (RSVP) -->
+    <section id="rsvp" class="section">
+        <h2>Confirmar Presença</h2>
+        <div class="divider"></div>
+        <form class="rsvp-form" onsubmit="enviarWhatsApp(event)">
+            <input type="text" id="nome" name="Nome Completo" placeholder="Seu nome completo" required>
+            <select id="confirmacao" name="Status de Presença" required>
+                <option value="">Você irá ao evento?</option>
+                <option value="Sim, com certeza!">Sim, com certeza estarei lá!</option>
+                <option value="Infelizmente não poderei ir.">Infelizmente não poderei ir</option>
+            </select>
+            <input type="number" id="acompanhantes" name="Quantidade de Acompanhantes" placeholder="Quantidade de acompanhantes" min="0" required>
+            <button type="submit" class="btn">Confirmar via WhatsApp</button>
+        </form>
+    </section>
+
+    <!-- Seção Nossa História -->
+    <section id="historia" class="section bg-light">
         <h2>Nossa História</h2>
         <div class="divider"></div>
         <p class="text">
-            Um pequeno resumo sobre o encontro e a jornada das duas até o grande dia.
+            O amor não surge por acaso, ele é construído nos pequenos detalhes. 
+            Aqui começou nossa jornada e estamos ansiosos para celebrar este dia tão especial com você!
         </p>
-        <img src="imagens/Nossa história.jpeg" alt="Foto Nossa História" class="foto-destaque">
     </section>
 
-    <!-- CONFIRMAR PRESENÇA (RSVP) -->
-    <section id="rsvp" class="section bg-light">
-        <h2>Confirmar Presença</h2>
-        <div class="divider"></div>
-        <form class="rsvp-form">
-            <input type="text" placeholder="Seu nome completo" required>
-            <select required>
-                <option value="" disabled selected>Você irá ao evento?</option>
-                <option value="sim">Sim, estarei presente!</option>
-                <option value="nao">Infelizmente não poderei ir</option>
-            </select>
-            <button type="submit" class="btn">Enviar Confirmação</button>
-        </form>
-        <br>
-        <img src="imagens/Confirmar Presença.jpeg" alt="Confirmar Presença" class="foto-destaque">
-    </section>
-
-    <!-- O EVENTO -->
+    <!-- Seção O Evento -->
     <section id="evento" class="section">
         <h2>O Evento</h2>
         <div class="divider"></div>
-        <div class="card">
-            <h3>Cerimônia & Recepção</h3>
-            <p><strong>Data:</strong> 2 de Maio de 2027</p>
-            <p><strong>Horário:</strong> 16:00h</p>
-            <p><strong>Local:</strong> Espaço das Festas - Nome do Local</p>
-            <p><strong>Endereço:</strong> Rua Exemplo, 123 - Cidade/UF</p>
+        
+        <div class="event-details" style="margin-top: 30px;">
+            <div class="card">
+                <h3>Cerimônia & Recepção</h3>
+                <p><strong>Data:</strong> 2 de Maio de 2027</p>
+                <p><strong>Horário:</strong> 16:00h</p>
+                <p><strong>Local:</strong> Espaço das Festas - Nome do Local</p>
+                <p><strong>Endereço:</strong> Rua Exemplo, 123 - Cidade/UF</p>
+            </div>
         </div>
-        <br>
-        <img src="imagens/O evento.jpeg" alt="O Evento" class="foto-destaque">
     </section>
 
-    <!-- FOTOS -->
-    <main id="fotos" class="section bg-light">
-        <h2>Galeria de Fotos</h2>
+    <!-- Seção Envio de Fotos e Vídeos (Telegram API) - Mantido igual ao código antigo -->
+    <section id="galeria" class="section bg-light">
+        <h2>📷 Compartilhe suas fotos e vídeos conosco!</h2>
         <div class="divider"></div>
-        <p class="text">Alguns dos nossos momentos favoritos juntos.</p>
-        <div class="gallery">
-            <img src="imagens/Fotos.jpeg" alt="Galeria Foto 1">
-            <img src="imagens/Inicio.jpeg" alt="Galeria Foto 2">
-        </div>
-    </main>
+        <p class="text">
+            Registre os momentos especiais do nosso casamento! Tire uma foto ou grave um vídeo agora mesmo e envie diretamente para nós.
+        </p>
 
-    <!-- RODAPÉ -->
+        <form id="mediaForm" class="rsvp-form" style="margin-top: 20px;">
+            <input type="text" id="nomeConvidado" placeholder="Seu Nome" required>
+
+            <label style="font-size: 14px; font-weight: bold; color: #555; text-align: left; display: block; margin-top: 10px;">
+                Selecione ou Tire a Foto/Vídeo:
+            </label>
+            <input type="file" id="midiaInput" accept="image/*,video/*" required style="background: white; padding: 10px;">
+
+            <button type="submit" id="btnEnviar" class="btn btn-upload">📤 Enviar Mídia</button>
+        </form>
+        <p id="statusMsg" style="margin-top: 15px; font-weight: bold;"></p>
+    </section>
+
     <footer>
-        <p>Regina & Marina • 2027</p>
+        <p>© 2026 - Desenvolvido por <strong>Larissa da Silva Anastácio</strong> | Todos os direitos reservados.</p>
     </footer>
 
+    <script src="script.js"></script>
+    <script>
+        const TELEGRAM_BOT_TOKEN = "8974321602:AAEDLXL5-zfCamNPc-ShVJq_vCUnjkWrm0M";
+        const TELEGRAM_CHAT_ID = "6051277135";
+
+        document.getElementById('mediaForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const btn = document.getElementById('btnEnviar');
+            const statusMsg = document.getElementById('statusMsg');
+            const nome = document.getElementById('nomeConvidado').value;
+            const fileInput = document.getElementById('midiaInput');
+            const file = fileInput.files ? fileInput.files[0] : null;
+
+            if (!file) {
+                statusMsg.style.color = 'red';
+                statusMsg.innerText = "⚠️ Por favor, selecione ou tire uma foto/vídeo antes de enviar!";
+                return;
+            }
+
+            if (file.size > 45 * 1024 * 1024) {
+                statusMsg.style.color = 'red';
+                statusMsg.innerText = "⚠️ O arquivo é muito grande! Escolha um arquivo menor que 45MB.";
+                return;
+            }
+
+            btn.disabled = true;
+            statusMsg.style.color = '#333';
+            statusMsg.innerText = "Processando e enviando arquivo, aguarde...";
+
+            try {
+                // Leitura do arquivo como Blob limpo para evitar trava do iOS/Safari
+                const fileArrayBuffer = await file.arrayBuffer();
+                const cleanBlob = new Blob([fileArrayBuffer], { type: file.type || 'image/jpeg' });
+
+                const formData = new FormData();
+                formData.append('chat_id', TELEGRAM_CHAT_ID);
+                formData.append('caption', `📷 Nova Mídia do Casamento!\n👤 De: ${nome}`);
+
+                const fileName = file.name || 'midia_casamento.jpg';
+                let endpoint = 'sendDocument';
+
+                if (file.type.startsWith('image/') || fileName.toLowerCase().match(/\.(jpg|jpeg|png|heic|webp)$/)) {
+                    if (file.size > 10 * 1024 * 1024) {
+                        endpoint = 'sendDocument';
+                        formData.append('document', cleanBlob, fileName);
+                    } else {
+                        endpoint = 'sendPhoto';
+                        formData.append('photo', cleanBlob, fileName);
+                    }
+                } else if (file.type.startsWith('video/') || fileName.toLowerCase().match(/\.(mp4|mov|m4v)$/)) {
+                    endpoint = 'sendVideo';
+                    formData.append('video', cleanBlob, fileName);
+                } else {
+                    formData.append('document', cleanBlob, fileName);
+                }
+
+                const response = await fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/${endpoint}`, {
+                    method: 'POST',
+                    body: formData
+                });
+
+                const result = await response.json();
+
+                if (result.ok) {
+                    statusMsg.style.color = 'green';
+                    statusMsg.innerText = "✅ Mídia enviada com sucesso! Muito obrigado!";
+                    document.getElementById('mediaForm').reset();
+                } else {
+                    throw new Error(result.description || "Falha na resposta do Telegram.");
+                }
+            } catch (error) {
+                statusMsg.style.color = 'red';
+                statusMsg.innerText = "❌ Erro ao enviar: " + (error.message || "Tente novamente.");
+            } finally {
+                btn.disabled = false;
+            }
+        });
+    </script>
 </body>
 </html>
