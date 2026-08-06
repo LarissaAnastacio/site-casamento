@@ -12,95 +12,99 @@ body {
     text-align: center;
 }
 
-/* NAVBAR - FIX PARA CELULARES (ANDROID E IOS) */
+/* NAVBAR FIXA IDÊNTICA À SUA IMAGEM (PARA COMPUTADOR E MOBILE) */
 .navbar {
     display: flex;
-    flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    gap: 12px 20px;
-    background-color: #f7f1eb;
-    padding: 15px 10px;
+    gap: 25px;
+    background-color: #fcf8f2;
+    padding: 15px 20px;
     position: sticky;
     top: 0;
     z-index: 1000;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+    flex-wrap: wrap;
 }
 
 .nav-link {
     display: inline-flex;
     align-items: center;
-    gap: 6px; /* Espaço entre o ícone e a palavra */
+    gap: 6px;
     color: #b86249;
     text-decoration: none;
     font-size: 13px;
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.5px;
-    white-space: nowrap; /* Impede a quebra de linha entre o ícone e a palavra */
     -webkit-tap-highlight-color: transparent;
 }
 
-.nav-link i {
-    font-size: 15px;
+.icon {
+    font-size: 14px;
     line-height: 1;
 }
 
 .nav-link:hover {
-    opacity: 0.8;
+    opacity: 0.75;
 }
 
-/* HERO SECTION */
+/* SEÇÃO PRINCIPAL (CAPA / HERO) */
 .hero {
-    background-color: #b86249;
+    background-color: #ba6349;
     color: #ffffff;
-    padding: 40px 20px;
+    padding: 70px 20px 60px 20px;
 }
 
-.icon-aliancas {
-    width: 60px;
-    margin-bottom: 15px;
+.hero-content {
+    max-width: 800px;
+    margin: 0 auto;
 }
 
 .sub-title {
     font-size: 14px;
-    letter-spacing: 2px;
+    letter-spacing: 3px;
     margin-bottom: 10px;
+    font-weight: 400;
 }
 
 h1 {
     font-family: 'Alex Brush', cursive;
-    font-size: 56px;
+    font-size: 75px;
     font-weight: normal;
-    margin: 10px 0;
+    margin: 10px 0 20px 0;
+    line-height: 1.1;
 }
 
 .date {
     font-family: 'Cormorant Garamond', serif;
     font-style: italic;
-    font-size: 22px;
-    margin-bottom: 30px;
+    font-size: 28px;
+    margin-bottom: 40px;
 }
 
 /* CONTAGEM REGRESSIVA */
 .countdown {
     display: flex;
     justify-content: center;
-    gap: 12px;
-    margin-bottom: 30px;
+    gap: 15px;
+    margin-bottom: 40px;
 }
 
 .countdown div {
-    border: 1px solid rgba(255, 255, 255, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.5);
     border-radius: 8px;
-    padding: 10px 15px;
-    min-width: 65px;
+    padding: 15px 10px;
+    width: 85px;
+    background: rgba(255, 255, 255, 0.05);
 }
 
 .countdown span {
-    font-size: 22px;
-    font-weight: bold;
+    font-size: 28px;
+    font-weight: 600;
     display: block;
+    line-height: 1;
+    margin-bottom: 6px;
 }
 
 .countdown p {
@@ -109,43 +113,52 @@ h1 {
     letter-spacing: 1px;
 }
 
-/* TEXTO DE BOAS VINDAS */
+/* MENSAGEM DE BOAS-VINDAS */
 .welcome-text {
-    max-width: 650px;
+    max-width: 700px;
     margin: 0 auto;
-    font-size: 14px;
-    line-height: 1.6;
+    font-size: 16px;
+    line-height: 1.8;
+    font-weight: 300;
 }
 
 .welcome-text p {
-    margin-bottom: 15px;
+    margin-bottom: 20px;
 }
 
-/* SEÇÕES GENÉRICAS */
+/* SEÇÕES */
 .section {
-    padding: 50px 20px;
+    padding: 70px 20px;
 }
 
 .bg-light {
-    background-color: #f7f1eb;
+    background-color: #fcf8f2;
 }
 
 h2 {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 32px;
+    font-size: 42px;
     color: #b86249;
+    font-weight: 600;
 }
 
 .divider {
-    width: 50px;
+    width: 70px;
     height: 2px;
     background-color: #b86249;
-    margin: 10px auto 25px auto;
+    margin: 15px auto 30px auto;
 }
 
-/* FORMULÁRIO RSVP */
+.text {
+    font-size: 16px;
+    line-height: 1.7;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+/* FORMULÁRIO DE CONFIRMAÇÃO */
 .rsvp-form {
-    max-width: 400px;
+    max-width: 450px;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
@@ -155,76 +168,153 @@ h2 {
 .rsvp-form input, 
 .rsvp-form select {
     width: 100%;
-    padding: 12px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 14px;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 15px;
+    outline: none;
+    font-family: 'Montserrat', sans-serif;
+    background: white;
 }
 
 .btn {
     background-color: #b86249;
     color: #fff;
     border: none;
-    padding: 12px;
-    border-radius: 5px;
-    font-weight: bold;
+    padding: 15px;
+    border-radius: 6px;
+    font-weight: 600;
     cursor: pointer;
+    font-size: 15px;
 }
 
 .btn:hover {
-    background-color: #a0533d;
+    opacity: 0.9;
 }
 
 /* CARD DO EVENTO */
 .card {
     background: white;
-    padding: 25px;
+    padding: 30px;
     border-radius: 8px;
-    max-width: 400px;
+    max-width: 450px;
     margin: 0 auto;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.04);
     text-align: left;
 }
 
 .card h3 {
     color: #b86249;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
+    font-size: 20px;
 }
 
 .card p {
-    margin-bottom: 8px;
-    font-size: 14px;
+    margin-bottom: 10px;
+    font-size: 15px;
 }
 
 /* RODAPÉ */
 footer {
-    background-color: #333;
+    background-color: #2b2b2b;
     color: #fff;
-    padding: 20px;
-    font-size: 13px;
+    padding: 30px;
+    font-size: 14px;
 }
 
-/* AJUSTES PARA TELAS PEQUENAS (MOBILE) */
-@media (max-width: 480px) {
+/* ==========================================================
+   RESPONSIVIDADE INTELIGENTE PARA CELULARES
+   ========================================================== */
+@media (max-width: 768px) {
     .navbar {
-        gap: 10px 14px;
-        padding: 12px 8px;
+        justify-content: flex-start;
+        padding: 10px 12px;
+        overflow-x: auto;
+        white-space: nowrap;
+        -webkit-overflow-scrolling: touch;
+        gap: 15px;
     }
-    
+
+    .navbar::-webkit-scrollbar {
+        display: none;
+    }
+
     .nav-link {
         font-size: 11px;
+        gap: 5px;
+        flex-shrink: 0;
+    }
+
+    .icon {
+        font-size: 13px;
+    }
+
+    .hero {
+        padding: 45px 16px 35px 16px;
+    }
+
+    .sub-title {
+        font-size: 12px;
+        letter-spacing: 2px;
     }
 
     h1 {
-        font-size: 42px;
+        font-size: 55px;
+    }
+
+    .date {
+        font-size: 22px;
+        margin-bottom: 30px;
+    }
+
+    .countdown {
+        gap: 10px;
+        margin-bottom: 30px;
     }
 
     .countdown div {
-        padding: 8px 10px;
-        min-width: 55px;
+        padding: 10px 4px;
+        width: 72px;
     }
-    
+
     .countdown span {
-        font-size: 18px;
+        font-size: 22px;
+    }
+
+    .countdown p {
+        font-size: 10px;
+    }
+
+    .welcome-text {
+        font-size: 14px;
+        line-height: 1.7;
+    }
+
+    .section {
+        padding: 50px 16px;
+    }
+
+    h2 {
+        font-size: 34px;
+    }
+
+    .text {
+        font-size: 14px;
+    }
+
+    .rsvp-form, .card {
+        max-width: 100%;
+    }
+
+    .rsvp-form input, 
+    .rsvp-form select,
+    .btn {
+        padding: 13px;
+        font-size: 14px;
+    }
+
+    footer {
+        padding: 20px 16px;
+        font-size: 12px;
     }
 }
