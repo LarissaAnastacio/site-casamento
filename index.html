@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <!-- Google tag (gtag.js) -->
@@ -35,29 +36,28 @@
             text-align: center;
         }
 
-        /* NAVBAR FIXA E COMPACTADA PARA NÃO COBRIR O CONTEÚDO */
+        /* NAVBAR FIXA PARA COMPUTADOR E MOBILE */
         .navbar {
             display: flex;
             justify-content: center;
             align-items: center;
-            gap: 15px;
+            gap: 20px;
             background-color: #fcf8f2;
-            padding: 12px 10px;
+            padding: 15px 20px;
             position: sticky;
             top: 0;
             z-index: 1000;
             box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
-            overflow-x: auto;
-            white-space: nowrap;
+            flex-wrap: wrap;
         }
 
         .nav-link {
             display: inline-flex;
             align-items: center;
-            gap: 5px;
+            gap: 6px;
             color: #b86249;
             text-decoration: none;
-            font-size: 11px;
+            font-size: 13px;
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 0.5px;
@@ -65,7 +65,7 @@
         }
 
         .icon {
-            font-size: 13px;
+            font-size: 15px;
             line-height: 1;
         }
 
@@ -73,11 +73,11 @@
             opacity: 0.75;
         }
 
-        /* SEÇÃO PRINCIPAL (CAPA / HERO) */
+        /* SEÇÃO PRINCIPAL (CAPA / HERO) - PADRÃO PC */
         .hero {
             background-color: #ba6349;
             color: #ffffff;
-            padding: 50px 20px 40px 20px;
+            padding: 80px 20px 60px 20px;
         }
 
         .hero-content {
@@ -85,81 +85,74 @@
             margin: 0 auto;
         }
 
-        .icon-aliancas {
-            width: 70px;
-            height: auto;
-            display: block;
-            margin: 0 auto 12px auto;
-        }
-
         .sub-title {
-            font-size: 13px;
-            letter-spacing: 2px;
-            margin-bottom: 8px;
+            font-size: 14px;
+            letter-spacing: 3px;
+            margin-bottom: 10px;
             font-weight: 400;
         }
 
         h1 {
             font-family: 'Alex Brush', cursive;
-            font-size: 60px;
+            font-size: 75px;
             font-weight: normal;
-            margin: 5px 0 15px 0;
+            margin: 10px 0 20px 0;
             line-height: 1.1;
         }
 
         .date {
             font-family: 'Cormorant Garamond', serif;
             font-style: italic;
-            font-size: 24px;
-            margin-bottom: 30px;
+            font-size: 28px;
+            margin-bottom: 40px;
         }
 
         /* CONTAGEM REGRESSIVA */
         .countdown {
             display: flex;
             justify-content: center;
-            gap: 10px;
-            margin-bottom: 35px;
+            gap: 15px;
+            margin-bottom: 40px;
         }
 
         .countdown div {
             border: 1px solid rgba(255, 255, 255, 0.5);
             border-radius: 8px;
-            padding: 10px 4px;
-            width: 70px;
+            padding: 15px 10px;
+            width: 85px;
             background: rgba(255, 255, 255, 0.05);
         }
 
         .countdown span {
-            font-size: 22px;
+            font-size: 28px;
             font-weight: 600;
             display: block;
             line-height: 1;
-            margin-bottom: 4px;
+            margin-bottom: 6px;
         }
 
         .countdown p {
-            font-size: 10px;
+            font-size: 11px;
             text-transform: uppercase;
             letter-spacing: 1px;
         }
 
         /* MENSAGEM DE BOAS-VINDAS */
         .welcome-text {
-            max-width: 680px;
+            max-width: 700px;
             margin: 0 auto;
-            font-size: 14px;
-            line-height: 1.7;
+            font-size: 16px;
+            line-height: 1.8;
             font-weight: 300;
         }
 
         .welcome-text p {
-            margin-bottom: 16px;
+            margin-bottom: 20px;
         }
 
         /* SEÇÕES */
         .section {
-            padding: 50px 20px;
+            padding: 70px 20px;
         }
 
         .bg-light {
@@ -168,21 +161,28 @@
 
         h2 {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 36px;
+            font-size: 42px;
             color: #b86249;
             font-weight: 600;
         }
 
         .divider {
-            width: 60px;
+            width: 70px;
             height: 2px;
             background-color: #b86249;
-            margin: 12px auto 25px auto;
+            margin: 15px auto 30px auto;
+        }
+
+        .text {
+            font-size: 16px;
+            line-height: 1.7;
+            max-width: 700px;
+            margin: 0 auto;
         }
 
         /* FORMULÁRIO DE CONFIRMAÇÃO */
         .rsvp-form {
-            max-width: 400px;
+            max-width: 450px;
             margin: 0 auto;
             display: flex;
             flex-direction: column;
@@ -192,10 +192,10 @@
         .rsvp-form input, 
         .rsvp-form select {
             width: 100%;
-            padding: 14px;
+            padding: 15px;
             border: 1px solid #ddd;
             border-radius: 6px;
-            font-size: 14px;
+            font-size: 15px;
             outline: none;
             font-family: 'Montserrat', sans-serif;
             background: white;
@@ -205,11 +205,11 @@
             background-color: #b86249;
             color: #fff;
             border: none;
-            padding: 14px;
+            padding: 15px;
             border-radius: 6px;
             font-weight: 600;
             cursor: pointer;
-            font-size: 14px;
+            font-size: 15px;
         }
 
         .btn:hover {
@@ -219,9 +219,9 @@
         /* CARD DO EVENTO */
         .card {
             background: white;
-            padding: 25px;
+            padding: 30px;
             border-radius: 8px;
-            max-width: 400px;
+            max-width: 450px;
             margin: 0 auto;
             box-shadow: 0 4px 15px rgba(0,0,0,0.04);
             text-align: left;
@@ -229,30 +229,139 @@
 
         .card h3 {
             color: #b86249;
-            margin-bottom: 12px;
+            margin-bottom: 15px;
+            font-size: 20px;
         }
 
         .card p {
-            margin-bottom: 8px;
-            font-size: 14px;
+            margin-bottom: 10px;
+            font-size: 15px;
         }
 
         /* RODAPÉ */
         footer {
             background-color: #2b2b2b;
             color: #fff;
-            padding: 24px;
-            font-size: 13px;
+            padding: 30px;
+            font-size: 14px;
         }
 
-        /* AJUSTES MOBILE EXTRAS */
-        @media (max-width: 768px) {
+
+        /* ==========================================================
+           AJUSTES ESPECÍFICOS PARA CELULARES (Android e iOS: 375px a 390px)
+           ========================================================== */
+        @media (max-width: 480px) {
             .navbar {
                 justify-content: flex-start;
-                padding: 10px 15px;
+                padding: 10px 12px;
+                overflow-x: auto;
+                white-space: nowrap;
+                -webkit-overflow-scrolling: touch;
             }
+
+            .navbar::-webkit-scrollbar {
+                display: none;
+            }
+
+            .nav-link {
+                font-size: 10px;
+                gap: 4px;
+                flex-shrink: 0;
+            }
+
+            .icon {
+                font-size: 12px;
+            }
+
+            .hero {
+                padding: 40px 16px 30px 16px;
+            }
+
+            .sub-title {
+                font-size: 11px;
+                letter-spacing: 2px;
+            }
+
             h1 {
-                font-size: 44px;
+                font-size: 45px;
+            }
+
+            .date {
+                font-size: 20px;
+                margin-bottom: 25px;
+            }
+
+            .countdown {
+                gap: 8px;
+                margin-bottom: 25px;
+            }
+
+            .countdown div {
+                padding: 8px 2px;
+                width: 65px;
+            }
+
+            .countdown span {
+                font-size: 20px;
+            }
+
+            .countdown p {
+                font-size: 9px;
+            }
+
+            .welcome-text {
+                font-size: 13px;
+                line-height: 1.6;
+            }
+
+            .welcome-text p {
+                margin-bottom: 14px;
+            }
+
+            .section {
+                padding: 40px 16px;
+            }
+
+            h2 {
+                font-size: 30px;
+            }
+
+            .divider {
+                width: 50px;
+                margin: 10px auto 20px auto;
+            }
+
+            .text {
+                font-size: 13px;
+            }
+
+            .rsvp-form {
+                max-width: 100%;
+            }
+
+            .rsvp-form input, 
+            .rsvp-form select,
+            .btn {
+                padding: 12px;
+                font-size: 13px;
+            }
+
+            .card {
+                max-width: 100%;
+                padding: 20px 16px;
+            }
+
+            .card h3 {
+                font-size: 16px;
+            }
+
+            .card p {
+                font-size: 13px;
+            }
+
+            footer {
+                padding: 20px 16px;
+                font-size: 11px;
             }
         }
     </style>
@@ -334,7 +443,7 @@
         </div>
     </section>
 
-    <!-- Seção Envio de Fotos e Vídeos (Telegram API) - Mantido igual ao código antigo -->
+    <!-- Seção Envio de Fotos e Vídeos (Telegram API) -->
     <section id="galeria" class="section bg-light">
         <h2>📷 Compartilhe suas fotos e vídeos conosco!</h2>
         <div class="divider"></div>
@@ -390,7 +499,6 @@
             statusMsg.innerText = "Processando e enviando arquivo, aguarde...";
 
             try {
-                // Leitura do arquivo como Blob limpo para evitar trava do iOS/Safari
                 const fileArrayBuffer = await file.arrayBuffer();
                 const cleanBlob = new Blob([fileArrayBuffer], { type: file.type || 'image/jpeg' });
 
