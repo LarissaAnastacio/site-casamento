@@ -10,21 +10,305 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
 
-    <!-- Ícones UIcons (Flaticon) -->
-    <link rel="stylesheet" href="https://cdn-uicons.flaticon.com/uicons-regular-rounded/css/uicons-regular-rounded.css">
+    <!-- Estilos CSS integrados para garantia de carregamento -->
+    <style>
+        /* Reset Básico */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    <!-- Estilos CSS -->
-    <link rel="stylesheet" href="style.css">
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: #4a4a4a;
+            background-color: #fdfbf7;
+            text-align: center;
+        }
+
+        /* MENU DE NAVEGAÇÃO RESPONSIVO */
+        .navbar {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 12px 24px;
+            background-color: #fcf8f2;
+            padding: 16px 12px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+        }
+
+        .nav-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            color: #b86249;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            white-space: nowrap; /* NUNCA QUEBRA ÍCONE E TEXTO */
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        /* ESTILIZAÇÃO DOS ÍCONES SVG */
+        .nav-icon {
+            width: 18px;
+            height: 18px;
+            fill: none;
+            stroke: #b86249;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            flex-shrink: 0; /* IMPEDE O ÍCONE DE ENCOLHER OU SUMIR NO MOBILE */
+            display: inline-block;
+        }
+
+        .nav-link:hover {
+            opacity: 0.75;
+        }
+
+        /* SEÇÃO PRINCIPAL (HERO) */
+        .hero {
+            background-color: #ba6349;
+            color: #ffffff;
+            padding: 45px 20px;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .icon-aliancas {
+            width: 65px;
+            height: auto;
+            margin-bottom: 12px;
+        }
+
+        .sub-title {
+            font-size: 14px;
+            letter-spacing: 2px;
+            margin-bottom: 8px;
+            font-weight: 400;
+        }
+
+        h1 {
+            font-family: 'Alex Brush', cursive;
+            font-size: 64px;
+            font-weight: normal;
+            margin: 5px 0 15px 0;
+            line-height: 1.1;
+        }
+
+        .date {
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-size: 24px;
+            margin-bottom: 30px;
+        }
+
+        /* CONTAGEM REGRESSIVA */
+        .countdown {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 35px;
+        }
+
+        .countdown div {
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            border-radius: 10px;
+            padding: 12px 8px;
+            width: 75px;
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .countdown span {
+            font-size: 24px;
+            font-weight: 600;
+            display: block;
+            line-height: 1;
+            margin-bottom: 4px;
+        }
+
+        .countdown p {
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            opacity: 0.9;
+        }
+
+        /* TEXTO DE BOAS-VINDAS */
+        .welcome-text {
+            max-width: 680px;
+            margin: 0 auto;
+            font-size: 15px;
+            line-height: 1.7;
+            font-weight: 300;
+        }
+
+        .welcome-text p {
+            margin-bottom: 18px;
+        }
+
+        /* SEÇÕES SECUNDÁRIAS */
+        .section {
+            padding: 60px 20px;
+        }
+
+        .bg-light {
+            background-color: #fcf8f2;
+        }
+
+        h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 36px;
+            color: #b86249;
+            font-weight: 600;
+        }
+
+        .divider {
+            width: 60px;
+            height: 2px;
+            background-color: #b86249;
+            margin: 12px auto 25px auto;
+        }
+
+        /* FORMULÁRIO DE CONFIRMAÇÃO */
+        .rsvp-form {
+            max-width: 420px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .rsvp-form input, 
+        .rsvp-form select {
+            width: 100%;
+            padding: 14px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 14px;
+            outline: none;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .btn {
+            background-color: #b86249;
+            color: #fff;
+            border: none;
+            padding: 14px;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #a0533d;
+        }
+
+        /* CARD DO EVENTO */
+        .card {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            max-width: 420px;
+            margin: 0 auto;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.04);
+            text-align: left;
+        }
+
+        .card h3 {
+            color: #b86249;
+            margin-bottom: 12px;
+        }
+
+        .card p {
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+
+        /* RODAPÉ */
+        footer {
+            background-color: #2b2b2b;
+            color: #fff;
+            padding: 24px;
+            font-size: 13px;
+        }
+
+        /* AJUSTES RESPONSIVOS PARA SMARTPHONES (ANDROID / IOS) */
+        @media (max-width: 600px) {
+            .navbar {
+                gap: 10px 14px;
+                padding: 12px 6px;
+            }
+            
+            .nav-link {
+                font-size: 11px;
+                letter-spacing: 0.5px;
+            }
+
+            .nav-icon {
+                width: 15px;
+                height: 15px;
+            }
+
+            h1 {
+                font-size: 46px;
+            }
+
+            .countdown {
+                gap: 8px;
+            }
+
+            .countdown div {
+                padding: 10px 4px;
+                width: 62px;
+            }
+            
+            .countdown span {
+                font-size: 20px;
+            }
+
+            .welcome-text {
+                font-size: 14px;
+            }
+        }
+    </style>
 </head>
 <body>
 
-    <!-- MENU DE NAVEGAÇÃO -->
+    <!-- MENU DE NAVEGAÇÃO COM SVGs EMBUTIDOS (NUNCA SUMEM NO MOBILE) -->
     <nav class="navbar">
-        <a href="#inicio" class="nav-link"><i class="fi fi-rr-home"></i> <span>Início</span></a>
-        <a href="#historia" class="nav-link"><i class="fi fi-rr-heart"></i> <span>Nossa História</span></a>
-        <a href="#rsvp" class="nav-link"><i class="fi fi-rr-users-alt"></i> <span>Confirmar Presença</span></a>
-        <a href="#evento" class="nav-link"><i class="fi fi-rr-marker"></i> <span>O Evento</span></a>
-        <a href="#fotos" class="nav-link"><i class="fi fi-rr-camera"></i> <span>Fotos</span></a>
+        <a href="#inicio" class="nav-link">
+            <svg class="nav-icon" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+            <span>Início</span>
+        </a>
+        <a href="#historia" class="nav-link">
+            <svg class="nav-icon" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l8.78-8.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+            <span>Nossa História</span>
+        </a>
+        <a href="#rsvp" class="nav-link">
+            <svg class="nav-icon" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+            <span>Confirmar Presença</span>
+        </a>
+        <a href="#evento" class="nav-link">
+            <svg class="nav-icon" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+            <span>O Evento</span>
+        </a>
+        <a href="#fotos" class="nav-link">
+            <svg class="nav-icon" viewBox="0 0 24 24"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path><circle cx="12" cy="13" r="4"></circle></svg>
+            <span>Fotos</span>
+        </a>
     </nav>
 
     <!-- SEÇÃO PRINCIPAL (CAPA / HERO) -->
