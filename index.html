@@ -111,7 +111,8 @@
             <label style="font-size: 14px; font-weight: bold; color: #555; text-align: left; display: block; margin-top: 10px;">
                 Selecione ou Tire a Foto/Vídeo:
             </label>
-            <input type="file" id="midiaInput" accept="image/*,video/*" capture="environment" required style="background: white; padding: 10px;">
+            <!-- Removido o atributo 'capture="environment"' para permitir galeria ou câmera no Android e iOS -->
+            <input type="file" id="midiaInput" accept="image/*,video/*" required style="background: white; padding: 10px;">
 
             <button type="submit" id="btnEnviar" class="btn btn-upload">📤 Enviar Mídia</button>
         </form>
@@ -125,8 +126,8 @@
     <script src="script.js"></script>
     <script>
         // Configuração do Envio via Telegram
-        const TELEGRAM_BOT_TOKEN = "8974321602:AAEDLXL5-zfCamNPc-ShVJq_vCUnjkWrm0M";
-        const TELEGRAM_CHAT_ID = "6051277135";
+        const TELEGRAM_BOT_TOKEN = "COLE_O_TOKEN_DO_BOT_AQUI";
+        const TELEGRAM_CHAT_ID = "COLE_O_SEU_CHAT_ID_AQUI";
 
         document.getElementById('mediaForm').addEventListener('submit', async function(e) {
             e.preventDefault();
@@ -145,8 +146,8 @@
 
             const formData = new FormData();
             formData.append('chat_id', TELEGRAM_CHAT_ID);
-            formData.append('caption', `📷 *Nova Mídia do Casamento!*\n👤 *De:* ${nome}`);
-            formData.append('parse_mode', 'Markdown');
+            // Legenda em texto simples (sem caracteres Markdown especiais ativados)
+            formData.append('caption', `📷 Nova Mídia do Casamento!\n👤 De: ${nome}`);
 
             // Define se é foto ou vídeo
             let endpoint = 'sendDocument';
