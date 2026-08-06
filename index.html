@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-4WF4470FNS"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -11,7 +10,6 @@
       gtag('config', 'G-4WF4470FNS');
     </script>
 
-    <!-- Importação das fontes do Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cormorant+Garamond:wght@600;700&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
@@ -23,7 +21,6 @@
 </head>
 <body>
 
-    <!-- Menu de Navegação -->
     <nav class="navbar">
         <a href="#home">Início</a>
         <a href="#rsvp">Confirmar Presença</a>
@@ -32,17 +29,14 @@
         <a href="#galeria">Fotos</a>
     </nav>
 
-    <!-- Capa do Site -->
     <header id="home" class="hero">
         <div class="hero-content">
-            <!-- Ícone das Alianças -->
             <img src="imagens/aliancas.png" alt="Ícone de Aliança" class="icon-aliancas">
             
             <p class="sub-title">VAMOS NOS CASAR!</p>
             <h1>Regina & Marina</h1>
             <p class="date">2 de Maio de 2027</p>
             
-            <!-- Contagem Regressiva -->
             <div id="countdown" class="countdown">
                 <div><span id="days">00</span><p>Dias</p></div>
                 <div><span id="hours">00</span><p>Horas</p></div>
@@ -50,7 +44,6 @@
                 <div><span id="seconds">00</span><p>Seg</p></div>
             </div>
 
-            <!-- Mensagem de Boas-Vindas -->
             <div class="welcome-text">
                 <p>Criamos este espaço com todo o carinho do mundo para compartilhar com vocês os detalhes desse momento tão especial das nossas vidas. Saber que teremos as pessoas que mais amamos ao nosso lado torna tudo ainda mais inesquecível!</p>
                 <p>Para nos ajudar a preparar cada detalhe com muito amor, pedimos a gentileza de confirmar sua presença. É bem simples: basta preencher os dados abaixo no menu <strong>“Confirmar Presença”</strong>.</p>
@@ -59,7 +52,6 @@
         </div>
     </header>
 
-    <!-- Seção Confirmar Presença (RSVP) -->
     <section id="rsvp" class="section">
         <h2>Confirmar Presença</h2>
         <div class="divider"></div>
@@ -75,7 +67,6 @@
         </form>
     </section>
 
-    <!-- Seção Nossa História -->
     <section id="historia" class="section bg-light">
         <h2>Nossa História</h2>
         <div class="divider"></div>
@@ -85,7 +76,6 @@
         </p>
     </section>
 
-    <!-- Seção O Evento -->
     <section id="evento" class="section">
         <h2>O Evento</h2>
         <div class="divider"></div>
@@ -93,11 +83,9 @@
         <img src="imagens/foto-principal.jpg" alt="Regina e Marina juntas" class="foto-casal-borda">
         
         <div class="event-details">
-            <!-- Detalhes do local e horário -->
-        </div>
+            </div>
     </section>
 
-    <!-- Seção Envio de Fotos e Vídeos (Telegram API) -->
     <section id="galeria" class="section bg-light">
         <h2>📷 Compartilhe suas fotos e vídeos conosco!</h2>
         <div class="divider"></div>
@@ -137,10 +125,17 @@
             const fileInput = document.getElementById('midiaInput');
             const file = fileInput.files ? fileInput.files[0] : null;
 
-            // Validação clara se o usuário esqueceu de escolher a foto/vídeo
             if (!file) {
                 statusMsg.style.color = 'red';
-                statusMsg.innerText = "⚠️ Por favor, selecione ou tire uma foto/vídeo antes de enviar!";
+                statusMsg.innerText = "⚠️ Selecione ou tire uma foto/vídeo antes de enviar!";
+                return;
+            }
+
+            // Limite de tamanho de arquivo (45 MB para evitar ultrapassar o limite de 50MB da API do Telegram)
+            const maxSizeBytes = 45 * 1024 * 1024; 
+            if (file.size > maxSizeBytes) {
+                statusMsg.style.color = 'red';
+                statusMsg.innerText = "⚠️ O arquivo é muito grande! Por favor, escolha um vídeo ou foto menor que 45MB.";
                 return;
             }
 
@@ -152,13 +147,19 @@
             formData.append('chat_id', TELEGRAM_CHAT_ID);
             formData.append('caption', `📷 Nova Mídia do Casamento!\n👤 De: ${nome}`);
 
-            // Tratamento robusto para iOS / Safari (extensões e MIME types)
+            // Tratamento das extensões
             const fileName = file.name.toLowerCase();
             let endpoint = 'sendDocument';
 
             if (file.type.startsWith('image/') || fileName.match(/\.(jpg|jpeg|png|heic|webp)$/)) {
-                endpoint = 'sendPhoto';
-                formData.append('photo', file);
+                // Se a foto for maior que 10MB (limite de photo), envia como documento para evitar falha
+                if (file.size > 10 * 1024 * 1024) {
+                    endpoint = 'sendDocument';
+                    formData.append('document', file);
+                } else {
+                    endpoint = 'sendPhoto';
+                    formData.append('photo', file);
+                }
             } else if (file.type.startsWith('video/') || fileName.match(/\.(mp4|mov|m4v)$/)) {
                 endpoint = 'sendVideo';
                 formData.append('video', file);
@@ -183,7 +184,7 @@
                 }
             } catch (error) {
                 statusMsg.style.color = 'red';
-                statusMsg.innerText = "❌ Erro ao enviar: " + error.message;
+                statusMsg.innerText = "❌ Erro ao enviar: " + (error.message || "Verifique sua conexão ou escolha um arquivo menor.");
             } finally {
                 btn.disabled = false;
             }
