@@ -26,7 +26,7 @@ h1, h2, h3 {
 }
 
 /* ==========================================
-   MENU DE NAVEGAÇÃO (FUNDO CLARO)
+   MENU DE NAVEGAÇÃO COM ÍCONES
    ========================================== */
 .navbar {
     position: fixed;
@@ -51,22 +51,36 @@ h1, h2, h3 {
     font-size: 0.82rem;
     letter-spacing: 1px;
     text-transform: uppercase;
-    transition: color 0.3s;
+    transition: color 0.3s, transform 0.2s;
     white-space: nowrap;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px; /* Espaço entre o texto e o ícone */
+}
+
+/* Estilo dos Ícones na Navbar */
+.navbar a i {
+    font-size: 0.95rem;
+    color: #C86D51 !important;
+    display: inline-block;
 }
 
 .navbar a:hover {
     color: #A3523A !important;
 }
 
+.navbar a:hover i {
+    color: #A3523A !important;
+}
+
 /* ==========================================
-   CAPA (HERO) - TERRACOTA SÓLIDO (IGUAL IMAGEM 1)
+   CAPA (HERO) - TERRACOTA SÓLIDO
    ========================================== */
 .hero {
     min-height: 100vh;
     padding: 110px 20px 50px 20px;
-    background-color: #C86D51 !important; /* Cor terracota exatamente igual à Imagem 1 */
-    background-image: none !important;     /* Remove imagem de fundo para ficar idêntico à Imagem 1 */
+    background-color: #C86D51 !important;
+    background-image: none !important;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -87,7 +101,6 @@ h1, h2, h3 {
     display: inline-block;
 }
 
-/* Nome das noivas em Alex Brush e Branco */
 .hero h1, 
 .hero-content h1 {
     font-family: 'Alex Brush', cursive !important;
@@ -111,7 +124,7 @@ h1, h2, h3 {
     color: #FFFFFF !important;
 }
 
-/* Quadrados da Contagem Regressiva (Estilo Imagem 1) */
+/* Quadrados da Contagem Regressiva */
 .countdown {
     display: flex;
     justify-content: center;
@@ -270,22 +283,27 @@ footer {
     font-size: 0.95rem;
 }
 
-/* ========================================================
-   RESPONSIVIDADE ESPECÍFICA PARA CELULARES (360px a 390px)
-   ======================================================== */
+/* ==========================================
+   RESPONSIVIDADE PARA CELULARES
+   ========================================== */
 @media screen and (max-width: 480px) {
     html {
-        scroll-padding-top: 90px;
+        scroll-padding-top: 95px;
     }
 
     .navbar {
-        padding: 10px 6px;
-        gap: 6px 10px;
+        padding: 10px 4px;
+        gap: 6px 8px;
     }
 
     .navbar a {
-        font-size: 0.68rem !important;
-        letter-spacing: 0.5px;
+        font-size: 0.65rem !important;
+        letter-spacing: 0.3px;
+        gap: 4px;
+    }
+
+    .navbar a i {
+        font-size: 0.78rem;
     }
 
     .hero {
