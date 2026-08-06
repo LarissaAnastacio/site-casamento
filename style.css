@@ -9,7 +9,7 @@
 
 html {
     scroll-behavior: smooth;
-    scroll-padding-top: 75px; /* Evita que o menu cubra os títulos ao clicar no link */
+    scroll-padding-top: 70px;
 }
 
 body {
@@ -17,7 +17,7 @@ body {
     color: #4A4238; /* Grafite quente elegante */
     background-color: #F7F4EF; /* Cor Palha suave */
     line-height: 1.6;
-    overflow-x: hidden; /* Evita rolagem lateral no celular */
+    overflow-x: hidden;
 }
 
 h1, h2, h3 {
@@ -33,7 +33,7 @@ h1, h2, h3 {
     top: 0;
     left: 0;
     width: 100%;
-    background-color: #F7F4EF; /* Cor Palha Sólida */
+    background: rgba(247, 244, 239, 0.98);
     padding: 15px;
     display: flex;
     justify-content: center;
@@ -46,7 +46,7 @@ h1, h2, h3 {
 
 .navbar a {
     text-decoration: none;
-    color: #C86D51; /* Terracota */
+    color: #C86D51;
     font-weight: 600;
     font-size: 0.85rem;
     letter-spacing: 1.5px;
@@ -55,23 +55,26 @@ h1, h2, h3 {
 }
 
 .navbar a:hover {
-    color: #A3523A; /* Terracota escuro */
+    color: #A3523A;
 }
 
 /* ==========================================
-   CAPA (HERO) - FUNDO TERRACOTA
+   CAPA (HERO) - FUNDO TERRACOTA & FONTE ALEX BRUSH
    ========================================== */
 .hero {
     min-height: 100vh;
     padding: 100px 20px 50px 20px;
-    background: linear-gradient(rgba(200, 109, 81, 0.9), rgba(200, 109, 81, 0.9)), 
-                url('imagens/foto-capa.jpg') center/cover no-repeat;
-    background-color: #C86D51; /* Cor de fundo garantida caso a foto falhe */
+    background-color: #C86D51 !important; /* Força o fundo Terracota */
+    background-image: linear-gradient(rgba(180, 85, 58, 0.85), rgba(180, 85, 58, 0.85)), 
+                      url('imagens/foto-capa.jpg') !important;
+    background-position: center !important;
+    background-size: cover !important;
+    background-repeat: no-repeat !important;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
-    color: #F7F4EF; /* Texto em Palha */
+    color: #F7F4EF !important;
 }
 
 .hero-content {
@@ -80,7 +83,6 @@ h1, h2, h3 {
     width: 100%;
 }
 
-/* ÍCONE DAS ALIANÇAS SOBRE O "VAMOS NOS CASAR!" */
 .icon-aliancas {
     width: 55px;
     height: auto;
@@ -88,27 +90,28 @@ h1, h2, h3 {
     display: inline-block;
 }
 
-/* NOME DAS NOIVAS COM A FONTE ALEX BRUSH */
-.hero h1 {
-    font-family: 'Alex Brush', cursive;
-    font-size: 5rem;
-    font-weight: normal;
-    margin: 10px 0;
-    color: #F7F4EF; /* Texto em Palha */
+/* Nome das noivas em Alex Brush e Palha */
+.hero h1, 
+.hero-content h1 {
+    font-family: 'Alex Brush', cursive !important;
+    font-size: 5rem !important;
+    font-weight: normal !important;
+    margin: 10px 0 !important;
+    color: #F7F4EF !important;
 }
 
 .sub-title {
     letter-spacing: 3px;
     font-size: 0.9rem;
     text-transform: uppercase;
-    color: #F7F4EF;
+    color: #F7F4EF !important;
 }
 
 .date {
     font-size: 1.2rem;
     font-style: italic;
     margin-bottom: 25px;
-    color: #F7F4EF;
+    color: #F7F4EF !important;
 }
 
 /* Quadrados da Contagem Regressiva */
@@ -119,20 +122,21 @@ h1, h2, h3 {
 }
 
 .countdown div {
-    background: rgba(247, 244, 239, 0.2);
+    background: rgba(247, 244, 239, 0.2) !important;
     backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
     padding: 12px 18px;
     border-radius: 8px;
     min-width: 70px;
     border: 1px solid rgba(247, 244, 239, 0.4);
-    color: #F7F4EF;
+    color: #F7F4EF !important;
 }
 
 .countdown span {
     font-size: 1.6rem;
     font-weight: bold;
     display: block;
-    color: #F7F4EF;
+    color: #F7F4EF !important;
 }
 
 .countdown p {
@@ -140,18 +144,16 @@ h1, h2, h3 {
     text-transform: uppercase;
     letter-spacing: 1px;
     margin: 0;
-    color: #F7F4EF;
+    color: #F7F4EF !important;
 }
 
-/* ==========================================
-   MENSAGEM DE BOAS-VINDAS
-   ========================================== */
+/* Mensagem de Boas-Vindas */
 .welcome-text {
     font-family: 'Montserrat', sans-serif;
     font-size: 1.05rem;
     line-height: 1.6;
     text-align: center;
-    color: #F7F4EF; /* Mantém Palha na capa */
+    color: #F7F4EF !important;
     max-width: 750px;
     width: 90%;
     margin: 35px auto 0 auto;
@@ -159,10 +161,7 @@ h1, h2, h3 {
 
 .welcome-text p {
     margin-bottom: 12px;
-}
-
-.welcome-text strong {
-    font-weight: 600;
+    color: #F7F4EF !important;
 }
 
 /* ==========================================
@@ -177,19 +176,19 @@ h1, h2, h3 {
 }
 
 .bg-light {
-    background-color: #EDE6DC; /* Tom palha levemente mais escuro para destaque */
+    background-color: #EDE6DC;
     max-width: 100%;
 }
 
 .section h2 {
     font-size: 2.5rem;
-    color: #C86D51; /* Terracota */
+    color: #C86D51;
 }
 
 .divider {
     width: 50px;
     height: 3px;
-    background-color: #C86D51; /* Terracota */
+    background-color: #C86D51;
     margin: 15px auto 30px auto;
     border-radius: 2px;
 }
@@ -242,18 +241,13 @@ h1, h2, h3 {
     font-size: 1rem;
     background-color: #FFFFFF;
     color: #4A4238;
-    outline: none;
-}
-
-.rsvp-form input[type="file"] {
-    cursor: pointer;
 }
 
 /* ==========================================
    BOTÕES
    ========================================== */
 .btn, .btn-upload {
-    background-color: #C86D51; /* Terracota */
+    background-color: #C86D51;
     color: #ffffff;
     border: none;
     border-radius: 50px;
@@ -272,12 +266,6 @@ h1, h2, h3 {
     transform: translateY(-2px);
 }
 
-.btn:disabled {
-    background-color: #ccc;
-    cursor: not-allowed;
-    transform: none;
-}
-
 /* ==========================================
    RODAPÉ
    ========================================== */
@@ -294,35 +282,38 @@ footer {
    ======================================================== */
 @media screen and (min-width: 360px) and (max-width: 390px) {
     html {
-        scroll-padding-top: 85px;
+        scroll-padding-top: 80px;
     }
 
     .navbar {
         padding: 10px 5px;
         gap: 6px;
-        background-color: #F7F4EF;
     }
 
     .navbar a {
         font-size: 0.7rem;
         letter-spacing: 0.5px;
-        color: #C86D51;
     }
 
     .hero {
-        padding-top: 110px;
-        padding-left: 15px;
-        padding-right: 15px;
-        background-color: #C86D51; /* Garante terracota no mobile */
+        padding-top: 105px;
+        padding-left: 12px;
+        padding-right: 12px;
     }
 
-    .hero h1 {
-        font-size: 3.5rem;
-        color: #F7F4EF;
+    .hero h1, 
+    .hero-content h1 {
+        font-size: 3.5rem !important;
     }
 
-    .sub-title, .date, .welcome-text {
-        color: #F7F4EF;
+    .sub-title {
+        font-size: 0.78rem;
+        letter-spacing: 2px;
+    }
+
+    .date {
+        font-size: 1.05rem;
+        margin-bottom: 18px;
     }
 
     .countdown {
@@ -332,20 +323,28 @@ footer {
     .countdown div {
         padding: 8px 6px;
         min-width: 52px;
-        background: rgba(247, 244, 239, 0.25);
     }
 
-    .countdown span, .countdown p {
-        color: #F7F4EF;
+    .countdown span {
+        font-size: 1.25rem;
+    }
+
+    .countdown p {
+        font-size: 0.65rem;
+    }
+
+    .welcome-text {
+        font-size: 0.92rem;
+        margin-top: 25px;
+        width: 100%;
     }
 
     .section {
-        padding: 50px 15px;
+        padding: 45px 12px;
     }
 
     .section h2 {
         font-size: 2rem;
-        color: #C86D51;
     }
 
     .rsvp-form input, 
@@ -357,6 +356,5 @@ footer {
     .btn, .btn-upload {
         padding: 12px 20px;
         font-size: 0.92rem;
-        background-color: #C86D51;
     }
 }
