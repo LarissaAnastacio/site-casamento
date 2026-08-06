@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <!-- Google tag (gtag.js) -->
@@ -36,12 +35,12 @@
             text-align: center;
         }
 
-        /* NAVBAR FIXA PARA COMPUTADOR E MOBILE */
+        /* NAVBAR FIXA IDÊNTICA À SUA IMAGEM (PARA COMPUTADOR E MOBILE) */
         .navbar {
             display: flex;
             justify-content: center;
             align-items: center;
-            gap: 20px;
+            gap: 25px;
             background-color: #fcf8f2;
             padding: 15px 20px;
             position: sticky;
@@ -73,11 +72,11 @@
             opacity: 0.75;
         }
 
-        /* SEÇÃO PRINCIPAL (CAPA / HERO) - PADRÃO PC */
+        /* SEÇÃO PRINCIPAL (CAPA / HERO) EXATAMENTE COMO NA SUA IMAGEM */
         .hero {
             background-color: #ba6349;
             color: #ffffff;
-            padding: 80px 20px 60px 20px;
+            padding: 70px 20px 60px 20px;
         }
 
         .hero-content {
@@ -248,15 +247,16 @@
 
 
         /* ==========================================================
-           AJUSTES ESPECÍFICOS PARA CELULARES (Android e iOS: 375px a 390px)
+           RESPONSIVIDADE INTELIGENTE PARA CELULARES
            ========================================================== */
-        @media (max-width: 480px) {
+        @media (max-width: 768px) {
             .navbar {
                 justify-content: flex-start;
                 padding: 10px 12px;
                 overflow-x: auto;
                 white-space: nowrap;
                 -webkit-overflow-scrolling: touch;
+                gap: 15px;
             }
 
             .navbar::-webkit-scrollbar {
@@ -264,111 +264,89 @@
             }
 
             .nav-link {
-                font-size: 10px;
-                gap: 4px;
+                font-size: 11px;
+                gap: 5px;
                 flex-shrink: 0;
             }
 
             .icon {
-                font-size: 12px;
+                font-size: 13px;
             }
 
             .hero {
-                padding: 40px 16px 30px 16px;
+                padding: 45px 16px 35px 16px;
             }
 
             .sub-title {
-                font-size: 11px;
+                font-size: 12px;
                 letter-spacing: 2px;
             }
 
             h1 {
-                font-size: 45px;
+                font-size: 55px;
             }
 
             .date {
-                font-size: 20px;
-                margin-bottom: 25px;
+                font-size: 22px;
+                margin-bottom: 30px;
             }
 
             .countdown {
-                gap: 8px;
-                margin-bottom: 25px;
+                gap: 10px;
+                margin-bottom: 30px;
             }
 
             .countdown div {
-                padding: 8px 2px;
-                width: 65px;
+                padding: 10px 4px;
+                width: 72px;
             }
 
             .countdown span {
-                font-size: 20px;
+                font-size: 22px;
             }
 
             .countdown p {
-                font-size: 9px;
+                font-size: 10px;
             }
 
             .welcome-text {
-                font-size: 13px;
-                line-height: 1.6;
-            }
-
-            .welcome-text p {
-                margin-bottom: 14px;
+                font-size: 14px;
+                line-height: 1.7;
             }
 
             .section {
-                padding: 40px 16px;
+                padding: 50px 16px;
             }
 
             h2 {
-                font-size: 30px;
-            }
-
-            .divider {
-                width: 50px;
-                margin: 10px auto 20px auto;
+                font-size: 34px;
             }
 
             .text {
-                font-size: 13px;
+                font-size: 14px;
             }
 
-            .rsvp-form {
+            .rsvp-form, .card {
                 max-width: 100%;
             }
 
             .rsvp-form input, 
             .rsvp-form select,
             .btn {
-                padding: 12px;
-                font-size: 13px;
-            }
-
-            .card {
-                max-width: 100%;
-                padding: 20px 16px;
-            }
-
-            .card h3 {
-                font-size: 16px;
-            }
-
-            .card p {
-                font-size: 13px;
+                padding: 13px;
+                font-size: 14px;
             }
 
             footer {
                 padding: 20px 16px;
-                font-size: 11px;
+                font-size: 12px;
             }
         }
     </style>
 </head>
 <body>
 
-    <!-- Menu de Navegação -->
+    <!-- Menu de Navegação com Emojis Nativos (Garante que aparecem em qualquer celular ou PC) -->
     <nav class="navbar">
         <a href="#inicio" class="nav-link"><span class="icon">🏠</span> <span>Início</span></a>
         <a href="#rsvp" class="nav-link"><span class="icon">📋</span> <span>Confirmar Presença</span></a>
@@ -387,9 +365,9 @@
             <!-- Contagem Regressiva -->
             <div id="countdown" class="countdown">
                 <div><span id="days">282</span><p>Dias</p></div>
-                <div><span id="hours">03</span><p>Horas</p></div>
-                <div><span id="minutes">48</span><p>Min</p></div>
-                <div><span id="seconds">56</span><p>Seg</p></div>
+                <div><span id="hours">00</span><p>Horas</p></div>
+                <div><span id="minutes">23</span><p>Min</p></div>
+                <div><span id="seconds">01</span><p>Seg</p></div>
             </div>
 
             <!-- Mensagem de Boas-Vindas -->
