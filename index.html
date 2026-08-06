@@ -124,7 +124,7 @@
 
     <script src="script.js"></script>
     <script>
-        // Configuração do Envio via Telegram com suas credenciais
+        // Configuração do Envio via Telegram
         const TELEGRAM_BOT_TOKEN = "8974321602:AAEDLXL5-zfCamNPc-ShVJq_vCUnjkWrm0M";
         const TELEGRAM_CHAT_ID = "6051277135";
 
@@ -135,9 +135,14 @@
             const statusMsg = document.getElementById('statusMsg');
             const nome = document.getElementById('nomeConvidado').value;
             const fileInput = document.getElementById('midiaInput');
-            const file = fileInput.files[0];
+            const file = fileInput.files ? fileInput.files[0] : null;
 
-            if(!file) return;
+            // Validação clara se o usuário esqueceu de escolher a foto/vídeo
+            if (!file) {
+                statusMsg.style.color = 'red';
+                statusMsg.innerText = "⚠️ Por favor, selecione ou tire uma foto/vídeo antes de enviar!";
+                return;
+            }
 
             btn.disabled = true;
             statusMsg.style.color = '#333';
@@ -147,12 +152,14 @@
             formData.append('chat_id', TELEGRAM_CHAT_ID);
             formData.append('caption', `📷 Nova Mídia do Casamento!\n👤 De: ${nome}`);
 
-            // Define se é foto ou vídeo
+            // Tratamento robusto para iOS / Safari (extensões e MIME types)
+            const fileName = file.name.toLowerCase();
             let endpoint = 'sendDocument';
-            if (file.type.startsWith('image/')) {
+
+            if (file.type.startsWith('image/') || fileName.match(/\.(jpg|jpeg|png|heic|webp)$/)) {
                 endpoint = 'sendPhoto';
                 formData.append('photo', file);
-            } else if (file.type.startsWith('video/')) {
+            } else if (file.type.startsWith('video/') || fileName.match(/\.(mp4|mov|m4v)$/)) {
                 endpoint = 'sendVideo';
                 formData.append('video', file);
             } else {
