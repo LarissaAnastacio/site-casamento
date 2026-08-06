@@ -25,7 +25,7 @@
             text-align: center;
         }
 
-        /* NAVBAR (ÍCONES NATIVOS ALINHADOS À ESQUERDA) */
+        /* NAVBAR (ÍCONES NATIVOS ALINHADOS Á ESQUERDA) */
         .navbar {
             display: flex;
             flex-wrap: wrap;
@@ -174,9 +174,10 @@
             margin: 12px auto 25px auto;
         }
 
-        .foto-casal-borda {
+        .foto-destaque {
             max-width: 100%;
-            height: auto;
+            max-height: 450px;
+            object-fit: cover;
             border-radius: 12px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.1);
             margin-top: 20px;
@@ -234,6 +235,25 @@
             font-size: 14px;
         }
 
+        /* GALERIA DE FOTOS */
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            max-width: 800px;
+            margin: 20px auto 0 auto;
+        }
+
+        .gallery img {
+            width: 100%;
+            max-width: 360px;
+            height: 240px;
+            object-fit: cover;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+
         /* RODAPÉ */
         footer {
             background-color: #2b2b2b;
@@ -265,7 +285,7 @@
 </head>
 <body>
 
-    <!-- MENU DE NAVEGAÇÃO -->
+    <!-- MENU DE NAVEGAÇÃO NATIVO (ÍCONES GARANTIDOS) -->
     <nav class="navbar">
         <a href="#inicio" class="nav-link">
             <span class="icon">&#8962;</span>
@@ -333,7 +353,8 @@
         <p class="text">
             Um pequeno resumo sobre o encontro e a jornada das duas até o grande dia.
         </p>
-        <img src="imagens/foto-casal.jpg" alt="Foto do Casal" class="foto-casal-borda">
+        <!-- IMAGEM ATUALIZADA COM O NOME EXATO -->
+        <img src="imagens/Nossa história.jpeg" alt="Foto Nossa História" class="foto-destaque">
     </section>
 
     <!-- CONFIRMAR PRESENÇA (RSVP) -->
@@ -349,6 +370,8 @@
             </select>
             <button type="submit" class="btn">Enviar Confirmação</button>
         </form>
+        <br>
+        <img src="imagens/Confirmar Presença.jpeg" alt="Confirmar Presença" class="foto-destaque">
     </section>
 
     <!-- O EVENTO -->
@@ -362,6 +385,8 @@
             <p><strong>Local:</strong> Espaço das Festas - Nome do Local</p>
             <p><strong>Endereço:</strong> Rua Exemplo, 123 - Cidade/UF</p>
         </div>
+        <br>
+        <img src="imagens/O evento.jpeg" alt="O Evento" class="foto-destaque">
     </section>
 
     <!-- FOTOS -->
@@ -369,6 +394,10 @@
         <h2>Galeria de Fotos</h2>
         <div class="divider"></div>
         <p class="text">Alguns dos nossos momentos favoritos juntos.</p>
+        <div class="gallery">
+            <img src="imagens/Fotos.jpeg" alt="Galeria Foto 1">
+            <img src="imagens/Inicio.jpeg" alt="Galeria Foto 2">
+        </div>
     </section>
 
     <!-- RODAPÉ -->
