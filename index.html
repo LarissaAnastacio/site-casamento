@@ -127,7 +127,7 @@
         const TELEGRAM_BOT_TOKEN = "8974321602:AAEDLXL5-zfCamNPc-ShVJq_vCUnjkWrm0M";
         const TELEGRAM_CHAT_ID = "6051277135";
 
-        document.getElementById('mediaForm').addEventListener('submit', function(e) {
+        document.getElementById('mediaForm').addEventListener('submit', async function(e) {
             e.preventDefault();
             
             const btn = document.getElementById('btnEnviar');
@@ -138,11 +138,10 @@
 
             if (!file) {
                 statusMsg.style.color = 'red';
-                statusMsg.innerText = "⚠️ Selecione ou tire uma foto/vídeo antes de enviar!";
+                statusMsg.innerText = "⚠️ Por favor, selecione ou tire uma foto/vídeo antes de enviar!";
                 return;
             }
 
-            // Limite de 45MB
             if (file.size > 45 * 1024 * 1024) {
                 statusMsg.style.color = 'red';
                 statusMsg.innerText = "⚠️ O arquivo é muito grande! Escolha um arquivo menor que 45MB.";
@@ -151,64 +150,55 @@
 
             btn.disabled = true;
             statusMsg.style.color = '#333';
-            statusMsg.innerText = "Enviando arquivo, aguarde...";
+            statusMsg.innerText = "Processando e enviando arquivo, aguarde...";
 
-            const formData = new FormData();
-            formData.append('chat_id', TELEGRAM_CHAT_ID);
-            formData.append('caption', `📷 Nova Mídia do Casamento!\n👤 De: ${nome}`);
+            try {
+                // Leitura do arquivo como Blob limpo para evitar trava do iOS/Safari
+                const fileArrayBuffer = await file.arrayBuffer();
+                const cleanBlob = new Blob([fileArrayBuffer], { type: file.type || 'image/jpeg' });
 
-            const fileName = file.name.toLowerCase();
-            let endpoint = 'sendDocument';
+                const formData = new FormData();
+                formData.append('chat_id', TELEGRAM_CHAT_ID);
+                formData.append('caption', `📷 Nova Mídia do Casamento!\n👤 De: ${nome}`);
 
-            if (file.type.startsWith('image/') || fileName.match(/\.(jpg|jpeg|png|heic|webp)$/)) {
-                if (file.size > 10 * 1024 * 1024) {
-                    endpoint = 'sendDocument';
-                    formData.append('document', file, file.name);
-                } else {
-                    endpoint = 'sendPhoto';
-                    formData.append('photo', file, file.name);
-                }
-            } else if (file.type.startsWith('video/') || fileName.match(/\.(mp4|mov|m4v)$/)) {
-                endpoint = 'sendVideo';
-                formData.append('video', file, file.name);
-            } else {
-                formData.append('document', file, file.name);
-            }
+                const fileName = file.name || 'midia_casamento.jpg';
+                let endpoint = 'sendDocument';
 
-            // Uso do XMLHttpRequest para total compatibilidade no Safari/iOS
-            const xhr = new XMLHttpRequest();
-            xhr.open('POST', `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/${endpoint}`, true);
-
-            xhr.onload = function() {
-                btn.disabled = false;
-                if (xhr.status >= 200 && xhr.status < 300) {
-                    try {
-                        const response = JSON.parse(xhr.responseText);
-                        if (response.ok) {
-                            statusMsg.style.color = 'green';
-                            statusMsg.innerText = "✅ Mídia enviada com sucesso! Muito obrigado!";
-                            document.getElementById('mediaForm').reset();
-                        } else {
-                            statusMsg.style.color = 'red';
-                            statusMsg.innerText = "❌ Erro do Telegram: " + response.description;
-                        }
-                    } catch (err) {
-                        statusMsg.style.color = 'red';
-                        statusMsg.innerText = "❌ Resposta inválida do servidor.";
+                if (file.type.startsWith('image/') || fileName.toLowerCase().match(/\.(jpg|jpeg|png|heic|webp)$/)) {
+                    if (file.size > 10 * 1024 * 1024) {
+                        endpoint = 'sendDocument';
+                        formData.append('document', cleanBlob, fileName);
+                    } else {
+                        endpoint = 'sendPhoto';
+                        formData.append('photo', cleanBlob, fileName);
                     }
+                } else if (file.type.startsWith('video/') || fileName.toLowerCase().match(/\.(mp4|mov|m4v)$/)) {
+                    endpoint = 'sendVideo';
+                    formData.append('video', cleanBlob, fileName);
                 } else {
-                    statusMsg.style.color = 'red';
-                    statusMsg.innerText = "❌ Erro ao enviar (Status " + xhr.status + "). Tente novamente.";
+                    formData.append('document', cleanBlob, fileName);
                 }
-            };
 
-            xhr.onerror = function() {
-                btn.disabled = false;
+                const response = await fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/${endpoint}`, {
+                    method: 'POST',
+                    body: formData
+                });
+
+                const result = await response.json();
+
+                if (result.ok) {
+                    statusMsg.style.color = 'green';
+                    statusMsg.innerText = "✅ Mídia enviada com sucesso! Muito obrigado!";
+                    document.getElementById('mediaForm').reset();
+                } else {
+                    throw new Error(result.description || "Falha na resposta do Telegram.");
+                }
+            } catch (error) {
                 statusMsg.style.color = 'red';
-                statusMsg.innerText = "❌ Erro de conexão ao enviar o arquivo. Verifique sua rede e tente novamente.";
-            };
-
-            xhr.send(formData);
+                statusMsg.innerText = "❌ Erro ao enviar: " + (error.message || "Tente novamente.");
+            } finally {
+                btn.disabled = false;
+            }
         });
     </script>
 </body>
