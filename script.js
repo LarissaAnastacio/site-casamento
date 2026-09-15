@@ -5,7 +5,7 @@ function enviarWhatsApp(e) {
     e.preventDefault();
 
     // Configure o número com DDI (55 para Brasil) + DDD + Número (apenas dígitos)
-    const numeroWhatsApp = "5511999999999"; // Substitua pelo número correto
+    const numeroWhatsApp = "5511961776919"; // Substitua pelo número correto
 
     const nome = document.getElementById('nome').value.trim();
     const statusPresenca = document.getElementById('confirmacao').value;
