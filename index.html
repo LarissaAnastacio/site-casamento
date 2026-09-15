@@ -65,15 +65,34 @@
     <section id="rsvp" class="section">
         <h2>Confirmar Presença</h2>
         <div class="divider"></div>
-        <form class="rsvp-form" onsubmit="enviarWhatsApp(event)">
-            <input type="text" id="nome" name="Nome Completo" placeholder="Seu nome completo" required>
+        <form id="rsvpForm" class="rsvp-form" onsubmit="enviarWhatsApp(event)">
+            <input 
+                type="text" 
+                id="nome" 
+                name="Nome Completo" 
+                placeholder="Seu nome completo" 
+                required
+            >
+            
             <select id="confirmacao" name="Status de Presença" required>
-                <option value="">Você irá ao evento?</option>
+                <option value="" disabled selected>Você irá ao evento?</option>
                 <option value="Sim, com certeza!">Sim, com certeza estarei lá!</option>
                 <option value="Infelizmente não poderei ir.">Infelizmente não poderei ir</option>
             </select>
-            <input type="number" id="acompanhantes" name="Quantidade de Acompanhantes" placeholder="Quantidade de acompanhantes" min="0" required>
-            <button type="submit" class="btn">Confirmar via WhatsApp</button>
+            
+            <input 
+                type="number" 
+                id="acompanhantes" 
+                name="Quantidade de Acompanhantes" 
+                placeholder="Quantidade de acompanhantes (coloque 0 se for sozinho)" 
+                min="0" 
+                value="0" 
+                required
+            >
+            
+            <button type="submit" class="btn">
+                <i class="fa-brands fa-whatsapp"></i> Confirmar via WhatsApp
+            </button>
         </form>
     </section>
 
