@@ -3,13 +3,45 @@ const TELEGRAM_CHAT_ID = "6051277135";
 
 function enviarWhatsApp(e) {
     e.preventDefault();
-    const nome = document.getElementById('nome').value;
-    const confirmacao = document.getElementById('confirmacao').value;
-    const acompanhantes = document.getElementById('acompanhantes').value;
-    
-    const texto = `Olá! Meu nome é ${nome}. Confirmação de presença: ${confirmacao}. Acompanhantes: ${acompanhantes}.`;
+
+    // Configure o número com DDI (55 para Brasil) + DDD + Número (apenas dígitos)
     const numeroWhatsApp = "5511999999999"; // Substitua pelo número correto
-    window.open(`https://api.whatsapp.com/send?phone=${numeroWhatsApp}&text=${encodeURIComponent(texto)}`, '_blank');
+
+    const nome = document.getElementById('nome').value.trim();
+    const statusPresenca = document.getElementById('confirmacao').value;
+    const acompanhantes = parseInt(document.getElementById('acompanhantes').value, 10);
+
+    // Validação básica de preenchimento
+    if (!nome || !statusPresenca || isNaN(acompanhantes)) {
+        alert("Por favor, preencha todos os campos do formulário.");
+        return;
+    }
+
+    // Formatação condicional de acompanhantes
+    let textoAcompanhantes = "";
+    if (statusPresenca === "Sim, com certeza!") {
+        if (acompanhantes === 0) {
+            textoAcompanhantes = "Irei sozinho(a).";
+        } else if (acompanhantes === 1) {
+            textoAcompanhantes = "Levarei 1 acompanhante.";
+        } else {
+            textoAcompanhantes = `Levarei ${acompanhantes} acompanhantes.`;
+        }
+    } else {
+        textoAcompanhantes = "Não se aplica (ausente).";
+    }
+
+    // Montagem da mensagem estruturada
+    const mensagem = 
+`Olá! Gostaria de confirmar minha presença no casamento de Regina & Marina 💍✨
+
+📌 *Nome:* ${nome}
+📌 *Presença:* ${statusPresenca}
+📌 *Acompanhantes:* ${textoAcompanhantes}`;
+
+    // Redirecionamento universal (compatível com mobile e web)
+    const urlWhatsApp = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensagem)}`;
+    window.open(urlWhatsApp, '_blank');
 }
 
 document.addEventListener('DOMContentLoaded', () => {
