@@ -100,10 +100,32 @@
     <section id="historia" class="section bg-light">
         <h2>Nossa História</h2>
         <div class="divider"></div>
-        <p class="text">
-            O amor não surge por acaso, ele é construído nos pequenos detalhes. 
-            Aqui começou nossa jornada e estamos ansiosos para celebrar este dia tão especial com você!
-        </p>
+
+        <div class="historia-container">
+            <!-- Imagem do Casal -->
+            <div class="historia-imagem-wrapper">
+                <img src="imagens/foto-casal.jpg" alt="Regina e Marina" class="historia-foto">
+            </div>
+
+            <!-- Texto da História -->
+            <div class="historia-texto">
+                <p>A gente começou como uma promessa, um presente da espiritualidade que nos foi prometido. Desde o dia 26/08/2023, soubemos o quanto Exu é vivo em nossas vidas!</p>
+                
+                <p>Foi um início de muita conexão, amor e desafios! Superamos e continuamos superando cada desavença, cada obstáculo e cada desafio que a vida nos apresenta, sempre nos escolhendo, pois entendemos que juntas somos mais fortes. Nosso amor, a união, o respeito e a cumplicidade sempre superam todo e qualquer obstáculo.</p>
+                
+                <p>Desde o princípio, a espiritualidade tem se feito presente, sendo nossa força, nosso pilar e nossa âncora em dias tempestuosos. Exu prometeu e cumpriu. Em cada propósito na nossa vida, cada meta atingida e cada desafio vencido, agradecemos ao sagrado por estar sempre ao nosso lado! Nossa história é 100% amor, carinho, respeito e cuidado, uma com a outra e com o nosso sagrado.</p>
+                
+                <p>Neste dia, um marco importante da nossa história, não poderia ser diferente! Convidamos apenas quem amamos e sabemos que nos ama de volta, pois será um momento sagrado, onde a espiritualidade vai mais uma vez abençoar e fortalecer nossos laços. Queremos as melhores energias e corações entregues a esse momento, nos desejando todo o amor e carinho que merecemos!</p>
+                
+                <p>Se você recebeu este convite, você faz parte da nossa família e é extremamente importante para nós!</p>
+                
+                <p>Esperamos que aproveitem este dia tão especial conosco da melhor forma possível: emocionem-se, dancem, cantem, divirtam-se e, claro, <strong>REGISTREM</strong> cada pequeno detalhe. Será de grande importância ver esses registros pelos olhos de cada um de vocês! Deixaremos um QR Code que dará acesso ao nosso site, onde vocês poderão fazer o upload dessas fotos e vídeos que, futuramente, estarão em nossas redes sociais ou em um álbum guardado com todo o amor e carinho.</p>
+                
+                <p>Obrigadas por fazerem parte deste marco na nossa história. Amamos vocês!</p>
+                
+                <p class="assinatura-casal">Marina & Regina</p>
+            </div>
+        </div>
     </section>
 
     <!-- Seção O Evento -->
@@ -122,24 +144,42 @@
         </div>
     </section>
 
-    <!-- Seção Envio de Fotos e Vídeos (Telegram API) -->
+    <!-- Seção Compartilhamento de Fotos e Vídeos -->
     <section id="galeria" class="section bg-light">
         <h2>📷 Compartilhe suas fotos e vídeos conosco!</h2>
         <div class="divider"></div>
         <p class="text">
-            Registre os momentos especiais do nosso casamento! Tire uma foto ou grave um vídeo agora mesmo e envie diretamente para nós.
+            Registre os momentos especiais do nosso casamento! Escolha fotos e vídeos direto da sua galeria ou tire na hora com a câmera do celular.
         </p>
 
         <form id="mediaForm" class="rsvp-form" style="margin-top: 20px;">
-            <input type="text" id="nomeConvidado" placeholder="Seu Nome" required>
+            <input type="text" id="nomeConvidado" placeholder="Seu Nome Completo" required>
 
             <label style="font-size: 14px; font-weight: bold; color: #555; text-align: left; display: block; margin-top: 10px;">
-                Selecione ou Tire a Foto/Vídeo:
+                Selecione as fotos e vídeos da galeria:
             </label>
-            <input type="file" id="midiaInput" accept="image/*,video/*" required style="background: white; padding: 10px;">
+            <input 
+                type="file" 
+                id="midiaInput" 
+                accept="image/*,video/*" 
+                multiple 
+                required 
+                style="background: white; padding: 10px; width: 100%; border-radius: 5px;"
+            >
 
-            <button type="submit" id="btnEnviar" class="btn btn-upload">📤 Enviar Mídia</button>
+            <!-- Barra de Progresso com Feedback em Tempo Real -->
+            <div id="progressArea" style="display: none; margin-top: 15px; width: 100%;">
+                <p id="progressStatus" style="font-size: 14px; color: #555; margin-bottom: 6px; text-align: center;">Preparando envio...</p>
+                <div style="background-color: #e5e7eb; border-radius: 10px; overflow: hidden; height: 16px; width: 100%;">
+                    <div id="progressBarFill" style="background-color: #2e7d32; width: 0%; height: 100%; transition: width 0.3s ease;"></div>
+                </div>
+            </div>
+
+            <button type="submit" id="btnEnviar" class="btn btn-upload" style="margin-top: 15px;">
+                <i class="fa-solid fa-cloud-arrow-up"></i> Enviar Mídia
+            </button>
         </form>
+
         <p id="statusMsg" style="margin-top: 15px; font-weight: bold;"></p>
     </section>
 

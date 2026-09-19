@@ -318,3 +318,66 @@ footer {
         font-size: 12px;
     }
 }
+/* ================= SEÇÃO NOSSA HISTÓRIA ================= */
+.historia-container {
+    max-width: 850px;
+    margin: 30px auto 0 auto;
+    padding: 0 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+}
+
+.historia-imagem-wrapper {
+    width: 100%;
+    max-width: 450px;
+}
+
+.historia-foto {
+    width: 100%;
+    height: auto;
+    border-radius: 16px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+    display: block;
+    object-fit: cover;
+}
+
+.historia-texto {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.05rem;
+    line-height: 1.85;
+    color: #444;
+    text-align: justify;
+}
+
+.historia-texto p {
+    margin-bottom: 20px;
+}
+
+.historia-texto strong {
+    color: #b25d3b;
+    font-weight: 600;
+}
+
+.assinatura-casal {
+    font-family: 'Alex Brush', cursive;
+    font-size: 2.4rem;
+    color: #b25d3b;
+    text-align: right;
+    margin-top: 25px;
+}
+
+/* Responsividade para Celulares */
+@media (max-width: 768px) {
+    .historia-texto {
+        font-size: 0.95rem;
+        line-height: 1.75;
+        text-align: left;
+    }
+    
+    .assinatura-casal {
+        font-size: 2.1rem;
+        text-align: center;
+    }
+}
