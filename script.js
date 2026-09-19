@@ -1,8 +1,9 @@
 // ================= CONFIGURAÇÃO DO CASAMENTO =================
 const CLOUD_NAME = "casamento-regina-marina"; 
 const UPLOAD_PRESET = "casamento-regina-marina"; 
-const NUMERO_WHATSAPP = "5511961776919"; 
-// Data e horário atualizados do casamento: 2 de Maio de 2027 às 15:00 (horário de Brasília)
+// Número de WhatsApp atualizado dos noivos
+const NUMERO_WHATSAPP = "5511947843323"; 
+// Data e horário do casamento: 2 de Maio de 2027 às 15:00 (horário de Brasília)
 const DATA_CASAMENTO = new Date("2027-05-02T15:00:00-03:00").getTime();
 // =============================================================
 
@@ -28,7 +29,7 @@ function atualizarContagemRegressiva() {
 
     const dias = Math.floor(diferenca / (1000 * 60 * 60 * 24));
     const horas = Math.floor((diferenca % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    const minutos = Math.floor((diferenca % (1000 * 60 * 60)) / (1000 * 60));
+    const minutos = Math.floor((diferenca % (1000 * 60)) / (1000 * 60));
     const segundos = Math.floor((diferenca % (1000 * 60)) / 1000);
 
     elDias.innerText = String(dias).padStart(2, '0');
@@ -90,7 +91,7 @@ function iniciarEnvioWhatsApp(e) {
 
     const urlDestino = `https://api.whatsapp.com/send?phone=${NUMERO_WHATSAPP}&text=${encodeURIComponent(mensagem)}`;
 
-    // Cria o link invisível para contornar qualquer restrição em navegadores de telemóvel
+    // Disparo direto sem bloqueio de pop-up no navegador
     const link = document.createElement('a');
     link.href = urlDestino;
     link.target = '_blank';
