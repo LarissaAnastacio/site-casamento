@@ -2,8 +2,8 @@
 const CLOUD_NAME = "casamento-regina-marina"; 
 const UPLOAD_PRESET = "casamento-regina-marina"; 
 const NUMERO_WHATSAPP = "5511961776919"; 
-// Data do casamento: 2 de Maio de 2027 às 16:00 (horário de Brasília)
-const DATA_CASAMENTO = new Date("2027-05-02T16:00:00-03:00").getTime();
+// Data e horário atualizados do casamento: 2 de Maio de 2027 às 15:00 (horário de Brasília)
+const DATA_CASAMENTO = new Date("2027-05-02T15:00:00-03:00").getTime();
 // =============================================================
 
 // 1. Contagem Regressiva Automática
@@ -37,7 +37,7 @@ function atualizarContagemRegressiva() {
     elSegundos.innerText = String(segundos).padStart(2, '0');
 }
 
-// Inicia a contagem de imediato e atualiza a cada 1 segundo
+// Inicia imediatamente e atualiza a cada 1 segundo
 setInterval(atualizarContagemRegressiva, 1000);
 atualizarContagemRegressiva();
 
@@ -90,7 +90,7 @@ function iniciarEnvioWhatsApp(e) {
 
     const urlDestino = `https://api.whatsapp.com/send?phone=${NUMERO_WHATSAPP}&text=${encodeURIComponent(mensagem)}`;
 
-    // Abertura compatível com Android, iOS e Computador
+    // Cria o link invisível para contornar qualquer restrição em navegadores de telemóvel
     const link = document.createElement('a');
     link.href = urlDestino;
     link.target = '_blank';
