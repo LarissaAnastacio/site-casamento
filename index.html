@@ -16,7 +16,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
 
-    <!-- Importação do FontAwesome para garantir ícones compatíveis em Android, iOS e PC -->
+    <!-- Importação do FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <meta charset="UTF-8">
@@ -28,7 +28,7 @@
 </head>
 <body>
 
-    <!-- Menu de Navegação com FontAwesome -->
+    <!-- Menu de Navegação -->
     <nav class="navbar">
         <a href="#inicio" class="nav-link"><i class="fa-solid fa-house icon"></i> <span>Início</span></a>
         <a href="#rsvp" class="nav-link"><i class="fa-solid fa-clipboard-list icon"></i> <span>Confirmar Presença</span></a>
@@ -44,12 +44,12 @@
             <h1>Regina & Marina</h1>
             <p class="date">2 de Maio de 2027</p>
             
-            <!-- Contagem Regressiva -->
+            <!-- Contagem Regressiva Automática -->
             <div id="countdown" class="countdown">
-                <div><span id="days">282</span><p>Dias</p></div>
-                <div><span id="hours">00</span><p>Horas</p></div>
-                <div><span id="minutes">23</span><p>Min</p></div>
-                <div><span id="seconds">01</span><p>Seg</p></div>
+                <div><span id="days">--</span><p>Dias</p></div>
+                <div><span id="hours">--</span><p>Horas</p></div>
+                <div><span id="minutes">--</span><p>Min</p></div>
+                <div><span id="seconds">--</span><p>Seg</p></div>
             </div>
 
             <!-- Mensagem de Boas-Vindas -->
@@ -137,9 +137,19 @@
             <div class="card">
                 <h3>Cerimônia & Recepção</h3>
                 <p><strong>Data:</strong> 2 de Maio de 2027</p>
-                <p><strong>Horário:</strong> 15:00h</p>
-                <p><strong>Local:</strong> Cantinho do Véio Chico </p>
-                <p><strong>Endereço:</strong> Estr. Antônia Madalena de Jesus, 409 - Sorocamirim, Ibiúna - SP, 18150-000 </p>
+                <p><strong>Horário:</strong> 16:00h</p>
+                <p><strong>Local:</strong> Cantinho do Véio Chico</p>
+                <p><strong>Endereço:</strong> Estr. Antônia Madalena de Jesus, 409 - Sorocamirim, Ibiúna - SP, 18150-000</p>
+                
+                <div style="margin-top: 20px; text-align: center;">
+                    <a href="https://www.google.com/maps/search/?api=1&query=Estr.+Antônia+Madalena+de+Jesus,+409+-+Sorocamirim,+Ibiúna+-+SP,+18150-000" 
+                       target="_blank" 
+                       rel="noopener noreferrer" 
+                       class="btn" 
+                       style="text-decoration: none; display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 10px 18px; font-size: 13px;">
+                        <i class="fa-solid fa-map-location-dot"></i> Como Chegar (Google Maps)
+                    </a>
+                </div>
             </div>
         </div>
     </section>
@@ -152,7 +162,6 @@
             Registre os momentos especiais do nosso casamento! Escolha fotos e vídeos direto da sua galeria ou tire na hora com a câmera do celular.
         </p>
 
-        <!-- Container isolado em div para evitar submissão/scroll indevido no celular -->
         <div class="rsvp-form" style="margin-top: 20px;">
             <input type="text" id="nomeConvidado" placeholder="Seu Nome Completo" required>
 
@@ -176,7 +185,6 @@
                 </div>
             </div>
 
-            <!-- Botão com tipo button e chamada controlada -->
             <button type="button" id="btnEnviar" class="btn btn-upload" style="margin-top: 15px;" onclick="realizarUploadMidia(event)">
                 <i class="fa-solid fa-cloud-arrow-up"></i> Enviar Mídia
             </button>
@@ -189,7 +197,7 @@
         <p>© 2026 - Desenvolvido por <strong>Larissa da Silva Anastácio</strong> | Todos os direitos reservados.</p>
     </footer>
 
-    <!-- Link para o arquivo JavaScript externo com controle de versão de cache -->
-    <script src="script.js?v=3.0"></script>
+    <!-- Script com versão 4.0 para forçar a renovação do cache -->
+    <script src="script.js?v=4.0"></script>
 </body>
 </html>

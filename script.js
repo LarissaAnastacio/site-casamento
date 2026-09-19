@@ -2,10 +2,47 @@
 const CLOUD_NAME = "casamento-regina-marina"; 
 const UPLOAD_PRESET = "casamento-regina-marina"; 
 const NUMERO_WHATSAPP = "5511961776919"; 
+// Data do casamento: 2 de Maio de 2027 às 16:00 (horário de Brasília)
+const DATA_CASAMENTO = new Date("2027-05-02T16:00:00-03:00").getTime();
 // =============================================================
 
-// Confirmação de Presença via WhatsApp (RSVP)
-function enviarWhatsApp(e) {
+// 1. Contagem Regressiva Automática
+function atualizarContagemRegressiva() {
+    const agora = new Date().getTime();
+    const diferenca = DATA_CASAMENTO - agora;
+
+    const elDias = document.getElementById("days");
+    const elHoras = document.getElementById("hours");
+    const elMinutos = document.getElementById("minutes");
+    const elSegundos = document.getElementById("seconds");
+
+    if (!elDias || !elHoras || !elMinutos || !elSegundos) return;
+
+    if (diferenca <= 0) {
+        elDias.innerText = "00";
+        elHoras.innerText = "00";
+        elMinutos.innerText = "00";
+        elSegundos.innerText = "00";
+        return;
+    }
+
+    const dias = Math.floor(diferenca / (1000 * 60 * 60 * 24));
+    const horas = Math.floor((diferenca % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutos = Math.floor((diferenca % (1000 * 60 * 60)) / (1000 * 60));
+    const segundos = Math.floor((diferenca % (1000 * 60)) / 1000);
+
+    elDias.innerText = String(dias).padStart(2, '0');
+    elHoras.innerText = String(horas).padStart(2, '0');
+    elMinutos.innerText = String(minutos).padStart(2, '0');
+    elSegundos.innerText = String(segundos).padStart(2, '0');
+}
+
+// Inicia a contagem de imediato e atualiza a cada 1 segundo
+setInterval(atualizarContagemRegressiva, 1000);
+atualizarContagemRegressiva();
+
+// 2. Confirmação de Presença via WhatsApp (RSVP)
+function iniciarEnvioWhatsApp(e) {
     if (e) {
         e.preventDefault();
         e.stopPropagation();
@@ -26,7 +63,7 @@ function enviarWhatsApp(e) {
     }
 
     if (!statusPresenca) {
-        alert("Por favor, selecione se você irá ao evento.");
+        alert("Por favor, selecione se irá comparecer ao evento.");
         if (confirmacaoInput) confirmacaoInput.focus();
         return false;
     }
@@ -44,31 +81,28 @@ function enviarWhatsApp(e) {
         textoAcompanhantes = "Não se aplica (ausente).";
     }
 
-    // Mensagem limpa sem quebra de caracteres
     const mensagem = 
-`Ola! Gostaria de confirmar minha presenca no casamento de Regina & Marina! 💍✨
+`Olá! Gostaria de confirmar minha presença no casamento de Regina & Marina 💍✨
 
-*Nome:* ${nome}
-*Presenca:* ${statusPresenca}
-*Acompanhantes:* ${textoAcompanhantes}`;
+📌 *Nome:* ${nome}
+📌 *Presença:* ${statusPresenca}
+📌 *Acompanhantes:* ${textoAcompanhantes}`;
 
-    const textoCodificado = encodeURIComponent(mensagem);
+    const urlDestino = `https://api.whatsapp.com/send?phone=${NUMERO_WHATSAPP}&text=${encodeURIComponent(mensagem)}`;
 
-    // Detecta se é celular (Android / iOS)
-    const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
-
-    if (isMobile) {
-        // No celular, abre o app nativo do WhatsApp instantaneamente
-        window.location.href = `whatsapp://send?phone=${NUMERO_WHATSAPP}&text=${textoCodificado}`;
-    } else {
-        // No computador, abre o WhatsApp Web direto em uma nova aba
-        window.open(`https://web.whatsapp.com/send?phone=${NUMERO_WHATSAPP}&text=${textoCodificado}`, '_blank');
-    }
+    // Abertura compatível com Android, iOS e Computador
+    const link = document.createElement('a');
+    link.href = urlDestino;
+    link.target = '_blank';
+    link.rel = 'noopener noreferrer';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
 
     return false;
 }
 
-// Upload de Fotos e Vídeos (Cloudinary)
+// 3. Upload de Fotos e Vídeos (Cloudinary)
 async function realizarUploadMidia(e) {
     if (e) {
         e.preventDefault();
@@ -128,18 +162,18 @@ async function realizarUploadMidia(e) {
             const result = await response.json();
 
             if (!response.ok) {
-                throw new Error(result.error?.message || "Erro retornado pelo servidor");
+                throw new Error(result.error?.message || "Erro no envio");
             }
 
             enviadosComSucesso++;
         } catch (err) {
-            console.error("Falha no upload:", err);
+            console.error("Falha no envio:", err);
             ultimoErro = err.message;
         }
 
         if (progressBarFill) {
-            const porcentagem = Math.round(((i + 1) / total) * 100);
-            progressBarFill.style.width = `${porcentagem}%`;
+            const percentagem = Math.round(((i + 1) / total) * 100);
+            progressBarFill.style.width = `${percentagem}%`;
         }
     }
 
@@ -148,7 +182,7 @@ async function realizarUploadMidia(e) {
     if (enviadosComSucesso === total) {
         if (statusMsg) {
             statusMsg.style.color = "#15803d";
-            statusMsg.innerText = `✅ ${enviadosComSucesso} arquivo(s) enviado(s) com sucesso! Muito obrigado!`;
+            statusMsg.innerText = `✅ ${enviadosComSucesso} ficheiro(s) enviado(s) com sucesso! Muito obrigado!`;
         }
         if (progressStatus) progressStatus.innerText = "Concluído!";
         if (nomeInput) nomeInput.value = "";
@@ -167,14 +201,3 @@ async function realizarUploadMidia(e) {
 
     return false;
 }
-
-// Vincula o evento caso o formulário ainda use a chamada clássica
-document.addEventListener('DOMContentLoaded', () => {
-    const mediaForm = document.getElementById('mediaForm');
-    if (mediaForm) {
-        mediaForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            realizarUploadMidia(e);
-        });
-    }
-});
