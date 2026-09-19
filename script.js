@@ -1,25 +1,34 @@
 // ================= CONFIGURAÇÃO DO CASAMENTO =================
-// 1. Verifique o nome completo no painel do Cloudinary (sem as reticências "...")
 const CLOUD_NAME = "casamento-regina-marina"; 
-
-// 2. Coloque aqui o nome exato do preset que você salvou como Unsigned
 const UPLOAD_PRESET = "casamento-regina-marina"; 
-
-// 3. Número de WhatsApp dos noivos (DDI + DDD + Telefone)
-const NUMERO_WHATSAPP = "5511999999999"; 
+const NUMERO_WHATSAPP = "5511961776919"; 
 // =============================================================
 
 // Confirmação de Presença via WhatsApp (RSVP)
 function enviarWhatsApp(e) {
-    e.preventDefault();
+    if (e) {
+        e.preventDefault();
+        e.stopPropagation();
+    }
 
-    const nome = document.getElementById('nome').value.trim();
-    const statusPresenca = document.getElementById('confirmacao').value;
-    const acompanhantes = parseInt(document.getElementById('acompanhantes').value, 10);
+    const nomeInput = document.getElementById('nome');
+    const confirmacaoInput = document.getElementById('confirmacao');
+    const acompanhantesInput = document.getElementById('acompanhantes');
 
-    if (!nome || !statusPresenca || isNaN(acompanhantes)) {
-        alert("Por favor, preencha todos os campos do formulário.");
-        return;
+    const nome = nomeInput ? nomeInput.value.trim() : "";
+    const statusPresenca = confirmacaoInput ? confirmacaoInput.value : "";
+    const acompanhantes = acompanhantesInput ? parseInt(acompanhantesInput.value, 10) : 0;
+
+    if (!nome) {
+        alert("Por favor, preencha o seu nome completo.");
+        if (nomeInput) nomeInput.focus();
+        return false;
+    }
+
+    if (!statusPresenca) {
+        alert("Por favor, selecione se você irá ao evento.");
+        if (confirmacaoInput) confirmacaoInput.focus();
+        return false;
     }
 
     let textoAcompanhantes = "";
@@ -35,99 +44,137 @@ function enviarWhatsApp(e) {
         textoAcompanhantes = "Não se aplica (ausente).";
     }
 
+    // Mensagem limpa sem quebra de caracteres
     const mensagem = 
-`Olá! Gostaria de confirmar minha presença no casamento de Regina & Marina 💍✨
+`Ola! Gostaria de confirmar minha presenca no casamento de Regina & Marina! 💍✨
 
-📌 *Nome:* ${nome}
-📌 *Presença:* ${statusPresenca}
-📌 *Acompanhantes:* ${textoAcompanhantes}`;
+*Nome:* ${nome}
+*Presenca:* ${statusPresenca}
+*Acompanhantes:* ${textoAcompanhantes}`;
 
-    const urlWhatsApp = `https://wa.me/${NUMERO_WHATSAPP}?text=${encodeURIComponent(mensagem)}`;
-    window.open(urlWhatsApp, '_blank');
+    const textoCodificado = encodeURIComponent(mensagem);
+
+    // Detecta se é celular (Android / iOS)
+    const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+
+    if (isMobile) {
+        // No celular, abre o app nativo do WhatsApp instantaneamente
+        window.location.href = `whatsapp://send?phone=${NUMERO_WHATSAPP}&text=${textoCodificado}`;
+    } else {
+        // No computador, abre o WhatsApp Web direto em uma nova aba
+        window.open(`https://web.whatsapp.com/send?phone=${NUMERO_WHATSAPP}&text=${textoCodificado}`, '_blank');
+    }
+
+    return false;
 }
 
 // Upload de Fotos e Vídeos (Cloudinary)
+async function realizarUploadMidia(e) {
+    if (e) {
+        e.preventDefault();
+        e.stopPropagation();
+    }
+
+    const btn = document.getElementById('btnEnviar');
+    const statusMsg = document.getElementById('statusMsg');
+    const progressArea = document.getElementById('progressArea');
+    const progressStatus = document.getElementById('progressStatus');
+    const progressBarFill = document.getElementById('progressBarFill');
+    const nomeInput = document.getElementById('nomeConvidado');
+    const fileInput = document.getElementById('midiaInput');
+
+    const nome = nomeInput ? nomeInput.value.trim() : "";
+    const files = fileInput ? fileInput.files : null;
+
+    if (!nome) {
+        alert("Por favor, preencha o seu nome completo antes de enviar.");
+        if (nomeInput) nomeInput.focus();
+        return false;
+    }
+
+    if (!files || files.length === 0) {
+        alert("Por favor, selecione ao menos uma foto ou vídeo da galeria.");
+        return false;
+    }
+
+    if (btn) btn.disabled = true;
+    if (progressArea) progressArea.style.display = 'block';
+    if (statusMsg) {
+        statusMsg.style.color = "#333";
+        statusMsg.innerText = "Iniciando upload...";
+    }
+    if (progressBarFill) progressBarFill.style.width = "0%";
+
+    let enviadosComSucesso = 0;
+    const total = files.length;
+    let ultimoErro = "";
+
+    for (let i = 0; i < total; i++) {
+        const file = files[i];
+        if (progressStatus) progressStatus.innerText = `Enviando ${i + 1} de ${total}: ${file.name}...`;
+
+        const formData = new FormData();
+        formData.append('file', file);
+        formData.append('upload_preset', UPLOAD_PRESET.trim());
+        formData.append('tags', `casamento,de_${nome.replace(/\s+/g, '_')}`);
+
+        try {
+            const cleanCloud = CLOUD_NAME.trim();
+            const response = await fetch(`https://api.cloudinary.com/v1_1/${cleanCloud}/auto/upload`, {
+                method: 'POST',
+                body: formData
+            });
+
+            const result = await response.json();
+
+            if (!response.ok) {
+                throw new Error(result.error?.message || "Erro retornado pelo servidor");
+            }
+
+            enviadosComSucesso++;
+        } catch (err) {
+            console.error("Falha no upload:", err);
+            ultimoErro = err.message;
+        }
+
+        if (progressBarFill) {
+            const porcentagem = Math.round(((i + 1) / total) * 100);
+            progressBarFill.style.width = `${porcentagem}%`;
+        }
+    }
+
+    if (btn) btn.disabled = false;
+
+    if (enviadosComSucesso === total) {
+        if (statusMsg) {
+            statusMsg.style.color = "#15803d";
+            statusMsg.innerText = `✅ ${enviadosComSucesso} arquivo(s) enviado(s) com sucesso! Muito obrigado!`;
+        }
+        if (progressStatus) progressStatus.innerText = "Concluído!";
+        if (nomeInput) nomeInput.value = "";
+        if (fileInput) fileInput.value = "";
+    } else if (enviadosComSucesso > 0) {
+        if (statusMsg) {
+            statusMsg.style.color = "#d97706";
+            statusMsg.innerText = `⚠️ Enviados ${enviadosComSucesso} de ${total}. Erro: ${ultimoErro}`;
+        }
+    } else {
+        if (statusMsg) {
+            statusMsg.style.color = "#dc2626";
+            statusMsg.innerText = `❌ Falha ao enviar: ${ultimoErro}`;
+        }
+    }
+
+    return false;
+}
+
+// Vincula o evento caso o formulário ainda use a chamada clássica
 document.addEventListener('DOMContentLoaded', () => {
     const mediaForm = document.getElementById('mediaForm');
-
     if (mediaForm) {
-        mediaForm.addEventListener('submit', async function(e) {
+        mediaForm.addEventListener('submit', function(e) {
             e.preventDefault();
-
-            const btn = document.getElementById('btnEnviar');
-            const statusMsg = document.getElementById('statusMsg');
-            const progressArea = document.getElementById('progressArea');
-            const progressStatus = document.getElementById('progressStatus');
-            const progressBarFill = document.getElementById('progressBarFill');
-            const nomeInput = document.getElementById('nomeConvidado');
-            const nome = nomeInput ? nomeInput.value.trim() : "Convidado";
-            const fileInput = document.getElementById('midiaInput');
-            const files = fileInput.files;
-
-            if (!files || files.length === 0) {
-                statusMsg.style.color = "#dc2626";
-                statusMsg.innerText = "⚠️ Por favor, selecione ao menos um arquivo.";
-                return;
-            }
-
-            btn.disabled = true;
-            if (progressArea) progressArea.style.display = 'block';
-            statusMsg.style.color = "#333";
-            statusMsg.innerText = "Iniciando upload...";
-            if (progressBarFill) progressBarFill.style.width = "0%";
-
-            let enviadosComSucesso = 0;
-            const total = files.length;
-            let ultimoErro = "";
-
-            for (let i = 0; i < total; i++) {
-                const file = files[i];
-                if (progressStatus) progressStatus.innerText = `Enviando ${i + 1} de ${total}: ${file.name}...`;
-
-                const formData = new FormData();
-                formData.append('file', file);
-                formData.append('upload_preset', UPLOAD_PRESET);
-                formData.append('tags', `casamento,de_${nome.replace(/\s+/g, '_')}`);
-
-                try {
-                    // Endpoint genérico 'auto' que aceita fotos, vídeos e formatos de iPhone (.heic / .mov)
-                    const response = await fetch(`https://api.cloudinary.com/v1_1/${CLOUD_NAME}/auto/upload`, {
-                        method: 'POST',
-                        body: formData
-                    });
-
-                    const result = await response.json();
-
-                    if (!response.ok) {
-                        throw new Error(result.error?.message || "Erro no envio");
-                    }
-
-                    enviadosComSucesso++;
-                } catch (err) {
-                    console.error("Falha detalhada:", err);
-                    ultimoErro = err.message;
-                }
-
-                if (progressBarFill) {
-                    const porcentagem = Math.round(((i + 1) / total) * 100);
-                    progressBarFill.style.width = `${porcentagem}%`;
-                }
-            }
-
-            btn.disabled = false;
-
-            if (enviadosComSucesso === total) {
-                statusMsg.style.color = "#15803d";
-                statusMsg.innerText = `✅ ${enviadosComSucesso} arquivo(s) enviado(s) com sucesso! Muito obrigado!`;
-                if (progressStatus) progressStatus.innerText = "Concluído!";
-                mediaForm.reset();
-            } else if (enviadosComSucesso > 0) {
-                statusMsg.style.color = "#d97706";
-                statusMsg.innerText = `⚠️ Enviados ${enviadosComSucesso} de ${total}. Último erro: ${ultimoErro}`;
-            } else {
-                statusMsg.style.color = "#dc2626";
-                statusMsg.innerText = `❌ Falha ao enviar: ${ultimoErro}`;
-            }
+            realizarUploadMidia(e);
         });
     }
 });

@@ -65,7 +65,7 @@
     <section id="rsvp" class="section">
         <h2>Confirmar Presença</h2>
         <div class="divider"></div>
-        <form id="rsvpForm" class="rsvp-form" onsubmit="enviarWhatsApp(event)">
+        <form id="rsvpForm" class="rsvp-form" onsubmit="iniciarEnvioWhatsApp(event); return false;">
             <input 
                 type="text" 
                 id="nome" 
@@ -90,7 +90,7 @@
                 required
             >
             
-            <button type="submit" class="btn">
+            <button type="submit" id="btnRsvp" class="btn">
                 <i class="fa-brands fa-whatsapp"></i> Confirmar via WhatsApp
             </button>
         </form>
@@ -104,7 +104,7 @@
         <div class="historia-container">
             <!-- Imagem do Casal -->
             <div class="historia-imagem-wrapper">
-                <img src="imagens/foto-casal.jpg" alt="Regina e Marina" class="historia-foto">
+                <img src="imagens/foto-casal.jpeg" alt="Regina e Marina" class="historia-foto">
             </div>
 
             <!-- Texto da História -->
@@ -137,9 +137,9 @@
             <div class="card">
                 <h3>Cerimônia & Recepção</h3>
                 <p><strong>Data:</strong> 2 de Maio de 2027</p>
-                <p><strong>Horário:</strong> 16:00h</p>
-                <p><strong>Local:</strong> Espaço das Festas - Nome do Local</p>
-                <p><strong>Endereço:</strong> Rua Exemplo, 123 - Cidade/UF</p>
+                <p><strong>Horário:</strong> 15:00h</p>
+                <p><strong>Local:</strong> Cantinho do Véio Chico </p>
+                <p><strong>Endereço:</strong> Estr. Antônia Madalena de Jesus, 409 - Sorocamirim, Ibiúna - SP, 18150-000 </p>
             </div>
         </div>
     </section>
@@ -152,7 +152,8 @@
             Registre os momentos especiais do nosso casamento! Escolha fotos e vídeos direto da sua galeria ou tire na hora com a câmera do celular.
         </p>
 
-        <form id="mediaForm" class="rsvp-form" style="margin-top: 20px;">
+        <!-- Container isolado em div para evitar submissão/scroll indevido no celular -->
+        <div class="rsvp-form" style="margin-top: 20px;">
             <input type="text" id="nomeConvidado" placeholder="Seu Nome Completo" required>
 
             <label style="font-size: 14px; font-weight: bold; color: #555; text-align: left; display: block; margin-top: 10px;">
@@ -175,10 +176,11 @@
                 </div>
             </div>
 
-            <button type="submit" id="btnEnviar" class="btn btn-upload" style="margin-top: 15px;">
+            <!-- Botão com tipo button e chamada controlada -->
+            <button type="button" id="btnEnviar" class="btn btn-upload" style="margin-top: 15px;" onclick="realizarUploadMidia(event)">
                 <i class="fa-solid fa-cloud-arrow-up"></i> Enviar Mídia
             </button>
-        </form>
+        </div>
 
         <p id="statusMsg" style="margin-top: 15px; font-weight: bold;"></p>
     </section>
@@ -187,7 +189,7 @@
         <p>© 2026 - Desenvolvido por <strong>Larissa da Silva Anastácio</strong> | Todos os direitos reservados.</p>
     </footer>
 
-    <!-- Link para o arquivo JavaScript externo -->
-    <script src="script.js"></script>
+    <!-- Link para o arquivo JavaScript externo com controle de versão de cache -->
+    <script src="script.js?v=3.0"></script>
 </body>
 </html>
